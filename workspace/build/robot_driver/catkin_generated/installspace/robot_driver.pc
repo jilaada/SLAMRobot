@@ -1,0 +1,8 @@
+prefix=/home/robot/Desktop/workspace/install
+
+Name: robot_driver
+Description: Description of robot_driver
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/robot/Desktop/workspace/install/lib 
+Requires: 
