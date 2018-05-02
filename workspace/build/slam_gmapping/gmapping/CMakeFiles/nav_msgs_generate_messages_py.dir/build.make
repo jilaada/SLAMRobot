@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robot/Desktop/workspace/src
+CMAKE_SOURCE_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robot/Desktop/workspace/build
+CMAKE_BINARY_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/build
 
 # Utility rule file for nav_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ slam_gmapping/gmapping/CMakeFiles/nav_msgs_generate_messages_py.dir/build: nav_m
 .PHONY : slam_gmapping/gmapping/CMakeFiles/nav_msgs_generate_messages_py.dir/build
 
 slam_gmapping/gmapping/CMakeFiles/nav_msgs_generate_messages_py.dir/clean:
-	cd /home/robot/Desktop/workspace/build/slam_gmapping/gmapping && $(CMAKE_COMMAND) -P CMakeFiles/nav_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping && $(CMAKE_COMMAND) -P CMakeFiles/nav_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : slam_gmapping/gmapping/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
 
 slam_gmapping/gmapping/CMakeFiles/nav_msgs_generate_messages_py.dir/depend:
-	cd /home/robot/Desktop/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robot/Desktop/workspace/src /home/robot/Desktop/workspace/src/slam_gmapping/gmapping /home/robot/Desktop/workspace/build /home/robot/Desktop/workspace/build/slam_gmapping/gmapping /home/robot/Desktop/workspace/build/slam_gmapping/gmapping/CMakeFiles/nav_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jilada/Github/CS726-SLAMRobot/workspace/src /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping /home/jilada/Github/CS726-SLAMRobot/workspace/build /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping/CMakeFiles/nav_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : slam_gmapping/gmapping/CMakeFiles/nav_msgs_generate_messages_py.dir/depend
 

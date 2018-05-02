@@ -1,8 +1,0 @@
-prefix=/home/robot/Desktop/workspace/devel
-
-Name: urg_c
-Description: Description of urg_c
-Version: 1.0.404
-Cflags: -I/home/robot/Desktop/workspace/src/urg_c-master/current/include
-Libs: -L/home/robot/Desktop/workspace/devel/lib -lliburg_c
-Requires: 

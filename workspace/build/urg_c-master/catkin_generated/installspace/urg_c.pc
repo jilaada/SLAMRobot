@@ -1,8 +1,0 @@
-prefix=/home/robot/Desktop/workspace/install
-
-Name: urg_c
-Description: Description of urg_c
-Version: 1.0.404
-Cflags: -I/home/robot/Desktop/workspace/install/include
-Libs: -L/home/robot/Desktop/workspace/install/lib -lliburg_c
-Requires: 

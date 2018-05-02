@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robot/Desktop/workspace/src
+CMAKE_SOURCE_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robot/Desktop/workspace/build
+CMAKE_BINARY_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/build
 
 # Include any dependencies generated for this target.
 include openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/depend.make
@@ -58,17 +58,17 @@ include openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/progress.make
 include openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/flags.make
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.o: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/flags.make
-openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.o: /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/eig3.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/robot/Desktop/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.o"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanmatcher.dir/eig3.cpp.o -c /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/eig3.cpp
+openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.o: /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/eig3.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.o"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanmatcher.dir/eig3.cpp.o -c /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/eig3.cpp
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scanmatcher.dir/eig3.cpp.i"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/eig3.cpp > CMakeFiles/scanmatcher.dir/eig3.cpp.i
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/eig3.cpp > CMakeFiles/scanmatcher.dir/eig3.cpp.i
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanmatcher.dir/eig3.cpp.s"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/eig3.cpp -o CMakeFiles/scanmatcher.dir/eig3.cpp.s
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/eig3.cpp -o CMakeFiles/scanmatcher.dir/eig3.cpp.s
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.o.requires:
 
@@ -82,17 +82,17 @@ openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.o.provides.bui
 
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/flags.make
-openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o: /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/scanmatcher.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/robot/Desktop/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o -c /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/scanmatcher.cpp
+openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o: /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/scanmatcher.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o -c /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/scanmatcher.cpp
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scanmatcher.dir/scanmatcher.cpp.i"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/scanmatcher.cpp > CMakeFiles/scanmatcher.dir/scanmatcher.cpp.i
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/scanmatcher.cpp > CMakeFiles/scanmatcher.dir/scanmatcher.cpp.i
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanmatcher.dir/scanmatcher.cpp.s"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/scanmatcher.cpp -o CMakeFiles/scanmatcher.dir/scanmatcher.cpp.s
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/scanmatcher.cpp -o CMakeFiles/scanmatcher.dir/scanmatcher.cpp.s
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o.requires:
 
@@ -106,17 +106,17 @@ openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o.provi
 
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/flags.make
-openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o: /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/scanmatcherprocessor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/robot/Desktop/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o -c /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/scanmatcherprocessor.cpp
+openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o: /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/scanmatcherprocessor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o -c /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/scanmatcherprocessor.cpp
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.i"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/scanmatcherprocessor.cpp > CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.i
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/scanmatcherprocessor.cpp > CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.i
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.s"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/scanmatcherprocessor.cpp -o CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.s
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/scanmatcherprocessor.cpp -o CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.s
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o.requires:
 
@@ -130,17 +130,17 @@ openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cp
 
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.o: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/flags.make
-openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.o: /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/smmap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/robot/Desktop/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.o"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanmatcher.dir/smmap.cpp.o -c /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/smmap.cpp
+openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.o: /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/smmap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.o"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanmatcher.dir/smmap.cpp.o -c /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/smmap.cpp
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scanmatcher.dir/smmap.cpp.i"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/smmap.cpp > CMakeFiles/scanmatcher.dir/smmap.cpp.i
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/smmap.cpp > CMakeFiles/scanmatcher.dir/smmap.cpp.i
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanmatcher.dir/smmap.cpp.s"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher/smmap.cpp -o CMakeFiles/scanmatcher.dir/smmap.cpp.s
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher/smmap.cpp -o CMakeFiles/scanmatcher.dir/smmap.cpp.s
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.o.requires:
 
@@ -163,20 +163,20 @@ scanmatcher_OBJECTS = \
 # External object files for target scanmatcher
 scanmatcher_EXTERNAL_OBJECTS =
 
-/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.o
-/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o
-/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o
-/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.o
-/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/build.make
-/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so: /home/robot/Desktop/workspace/devel/lib/libsensor_range.so
-/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so: /home/robot/Desktop/workspace/devel/lib/libutils.so
-/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so: /home/robot/Desktop/workspace/devel/lib/libsensor_base.so
-/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/robot/Desktop/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library /home/robot/Desktop/workspace/devel/lib/libscanmatcher.so"
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scanmatcher.dir/link.txt --verbose=$(VERBOSE)
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/eig3.cpp.o
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/smmap.cpp.o
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/build.make
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libsensor_range.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libutils.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libsensor_base.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so: openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scanmatcher.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/build: /home/robot/Desktop/workspace/devel/lib/libscanmatcher.so
+openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/build: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so
 
 .PHONY : openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/build
 
@@ -188,10 +188,10 @@ openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/requires: openslam_gmap
 .PHONY : openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/requires
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/clean:
-	cd /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher && $(CMAKE_COMMAND) -P CMakeFiles/scanmatcher.dir/cmake_clean.cmake
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher && $(CMAKE_COMMAND) -P CMakeFiles/scanmatcher.dir/cmake_clean.cmake
 .PHONY : openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/clean
 
 openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/depend:
-	cd /home/robot/Desktop/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robot/Desktop/workspace/src /home/robot/Desktop/workspace/src/openslam_gmapping/scanmatcher /home/robot/Desktop/workspace/build /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher /home/robot/Desktop/workspace/build/openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jilada/Github/CS726-SLAMRobot/workspace/src /home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/scanmatcher /home/jilada/Github/CS726-SLAMRobot/workspace/build /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher /home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : openslam_gmapping/scanmatcher/CMakeFiles/scanmatcher.dir/depend
 

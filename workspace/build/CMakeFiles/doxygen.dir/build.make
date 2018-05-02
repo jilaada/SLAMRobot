@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robot/Desktop/workspace/src
+CMAKE_SOURCE_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robot/Desktop/workspace/build
+CMAKE_BINARY_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/build
 
 # Utility rule file for doxygen.
 
@@ -67,6 +67,6 @@ CMakeFiles/doxygen.dir/clean:
 .PHONY : CMakeFiles/doxygen.dir/clean
 
 CMakeFiles/doxygen.dir/depend:
-	cd /home/robot/Desktop/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robot/Desktop/workspace/src /home/robot/Desktop/workspace/src /home/robot/Desktop/workspace/build /home/robot/Desktop/workspace/build /home/robot/Desktop/workspace/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jilada/Github/CS726-SLAMRobot/workspace/src /home/jilada/Github/CS726-SLAMRobot/workspace/src /home/jilada/Github/CS726-SLAMRobot/workspace/build /home/jilada/Github/CS726-SLAMRobot/workspace/build /home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doxygen.dir/depend
 

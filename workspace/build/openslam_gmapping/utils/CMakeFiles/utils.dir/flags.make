@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC
 
 CXX_DEFINES = -DROS_BUILD_SHARED_LIBS=1 -Dutils_EXPORTS
 
-CXX_INCLUDES = -I/home/robot/Desktop/workspace/src/openslam_gmapping/include -I/home/robot/Desktop/workspace/src/openslam_gmapping/utils/. 
+CXX_INCLUDES = -I/home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/include -I/home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/utils/. 
 

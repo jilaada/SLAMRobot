@@ -1,8 +1,8 @@
-# Install script for directory: /home/robot/Desktop/workspace/src/slam_gmapping/gmapping
+# Install script for directory: /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/robot/Desktop/workspace/install")
+  set(CMAKE_INSTALL_PREFIX "/home/jilada/Github/CS726-SLAMRobot/workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,18 +33,18 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/robot/Desktop/workspace/build/slam_gmapping/gmapping/catkin_generated/installspace/gmapping.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping/catkin_generated/installspace/gmapping.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gmapping/cmake" TYPE FILE FILES
-    "/home/robot/Desktop/workspace/build/slam_gmapping/gmapping/catkin_generated/installspace/gmappingConfig.cmake"
-    "/home/robot/Desktop/workspace/build/slam_gmapping/gmapping/catkin_generated/installspace/gmappingConfig-version.cmake"
+    "/home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping/catkin_generated/installspace/gmappingConfig.cmake"
+    "/home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping/catkin_generated/installspace/gmappingConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gmapping" TYPE FILE FILES "/home/robot/Desktop/workspace/src/slam_gmapping/gmapping/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gmapping" TYPE FILE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
@@ -54,12 +54,12 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/gmapping" TYPE EXECUTABLE FILES "/home/robot/Desktop/workspace/devel/lib/gmapping/slam_gmapping")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/gmapping" TYPE EXECUTABLE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/slam_gmapping")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping"
-         OLD_RPATH "/opt/ros/kinetic/lib:/home/robot/Desktop/workspace/devel/lib:"
+         OLD_RPATH "/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib:/opt/ros/kinetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping")
@@ -74,20 +74,16 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping_replay"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/gmapping" TYPE EXECUTABLE FILES "/home/robot/Desktop/workspace/devel/lib/gmapping/slam_gmapping_replay")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/gmapping" TYPE EXECUTABLE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/slam_gmapping_replay")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping_replay" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping_replay")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping_replay"
-         OLD_RPATH "/opt/ros/kinetic/lib:/home/robot/Desktop/workspace/devel/lib:"
+         OLD_RPATH "/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib:/opt/ros/kinetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gmapping/slam_gmapping_replay")
     endif()
   endif()
-endif()
-
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gmapping" TYPE FILE FILES "/home/robot/Desktop/workspace/src/slam_gmapping/gmapping/nodelet_plugins.xml")
 endif()
 

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/robot/Desktop/workspace/src/openslam_gmapping/sensor/sensor_base/sensor.cpp" "/home/robot/Desktop/workspace/build/openslam_gmapping/sensor/sensor_base/CMakeFiles/sensor_base.dir/sensor.cpp.o"
-  "/home/robot/Desktop/workspace/src/openslam_gmapping/sensor/sensor_base/sensorreading.cpp" "/home/robot/Desktop/workspace/build/openslam_gmapping/sensor/sensor_base/CMakeFiles/sensor_base.dir/sensorreading.cpp.o"
+  "/home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/sensor/sensor_base/sensor.cpp" "/home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/sensor/sensor_base/CMakeFiles/sensor_base.dir/sensor.cpp.o"
+  "/home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/sensor/sensor_base/sensorreading.cpp" "/home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/sensor/sensor_base/CMakeFiles/sensor_base.dir/sensorreading.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,8 +16,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/robot/Desktop/workspace/src/openslam_gmapping/include"
-  "/home/robot/Desktop/workspace/src/openslam_gmapping/sensor/sensor_base/."
+  "/home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/include"
+  "/home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/sensor/sensor_base/."
   )
 
 # Targets to which this target links.

@@ -1,8 +1,8 @@
-# Install script for directory: /home/robot/Desktop/workspace/src/robot_driver
+# Install script for directory: /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/robot/Desktop/workspace/install")
+  set(CMAKE_INSTALL_PREFIX "/home/jilada/Github/CS726-SLAMRobot/workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/robot/Desktop/workspace/build/robot_driver/catkin_generated/installspace/robot_driver.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/build/robot_driver/catkin_generated/installspace/robot_driver.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_driver/cmake" TYPE FILE FILES
-    "/home/robot/Desktop/workspace/build/robot_driver/catkin_generated/installspace/robot_driverConfig.cmake"
-    "/home/robot/Desktop/workspace/build/robot_driver/catkin_generated/installspace/robot_driverConfig-version.cmake"
+    "/home/jilada/Github/CS726-SLAMRobot/workspace/build/robot_driver/catkin_generated/installspace/robot_driverConfig.cmake"
+    "/home/jilada/Github/CS726-SLAMRobot/workspace/build/robot_driver/catkin_generated/installspace/robot_driverConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_driver" TYPE FILE FILES "/home/robot/Desktop/workspace/src/robot_driver/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_driver" TYPE FILE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/package.xml")
 endif()
 

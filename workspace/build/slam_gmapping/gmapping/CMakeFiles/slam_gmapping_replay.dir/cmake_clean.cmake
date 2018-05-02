@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/slam_gmapping_replay.dir/src/slam_gmapping.cpp.o"
   "CMakeFiles/slam_gmapping_replay.dir/src/replay.cpp.o"
-  "/home/robot/Desktop/workspace/devel/lib/gmapping/slam_gmapping_replay.pdb"
-  "/home/robot/Desktop/workspace/devel/lib/gmapping/slam_gmapping_replay"
+  "/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/slam_gmapping_replay.pdb"
+  "/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/slam_gmapping_replay"
 )
 
 # Per-language clean rules from dependency scanning.

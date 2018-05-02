@@ -1,8 +1,8 @@
-# Install script for directory: /home/robot/Desktop/workspace/src/slam_gmapping/slam_gmapping
+# Install script for directory: /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/slam_gmapping
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/robot/Desktop/workspace/install")
+  set(CMAKE_INSTALL_PREFIX "/home/jilada/Github/CS726-SLAMRobot/workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,6 +33,6 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/slam_gmapping" TYPE FILE FILES "/home/robot/Desktop/workspace/src/slam_gmapping/slam_gmapping/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/slam_gmapping" TYPE FILE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/slam_gmapping/package.xml")
 endif()
 

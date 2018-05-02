@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robot/Desktop/workspace/src
+CMAKE_SOURCE_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robot/Desktop/workspace/build
+CMAKE_BINARY_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/build
 
 # Utility rule file for _run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/robot/Desktop/workspace/build
 include slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/progress.make
 
 slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch:
-	cd /home/robot/Desktop/workspace/build/slam_gmapping/gmapping && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/run_tests.py /home/robot/Desktop/workspace/build/test_results/gmapping/rostest-test_basic_localization_symmetry.xml /opt/ros/kinetic/share/rostest/cmake/../../../bin/rostest\ --pkgdir=/home/robot/Desktop/workspace/src/slam_gmapping/gmapping\ --package=gmapping\ --results-filename\ test_basic_localization_symmetry.xml\ --results-base-dir\ "/home/robot/Desktop/workspace/build/test_results"\ /home/robot/Desktop/workspace/src/slam_gmapping/gmapping/test/basic_localization_symmetry.launch\ 
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/run_tests.py /home/jilada/Github/CS726-SLAMRobot/workspace/build/test_results/gmapping/rostest-test_basic_localization_symmetry.xml /opt/ros/kinetic/share/rostest/cmake/../../../bin/rostest\ --pkgdir=/home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping\ --package=gmapping\ --results-filename\ test_basic_localization_symmetry.xml\ --results-base-dir\ "/home/jilada/Github/CS726-SLAMRobot/workspace/build/test_results"\ /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping/test/basic_localization_symmetry.launch\ 
 
 _run_tests_gmapping_rostest_test_basic_localization_symmetry.launch: slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch
 _run_tests_gmapping_rostest_test_basic_localization_symmetry.launch: slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/build.make
@@ -67,10 +67,10 @@ slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localiz
 .PHONY : slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/build
 
 slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/clean:
-	cd /home/robot/Desktop/workspace/build/slam_gmapping/gmapping && $(CMAKE_COMMAND) -P CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/cmake_clean.cmake
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping && $(CMAKE_COMMAND) -P CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/cmake_clean.cmake
 .PHONY : slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/clean
 
 slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/depend:
-	cd /home/robot/Desktop/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robot/Desktop/workspace/src /home/robot/Desktop/workspace/src/slam_gmapping/gmapping /home/robot/Desktop/workspace/build /home/robot/Desktop/workspace/build/slam_gmapping/gmapping /home/robot/Desktop/workspace/build/slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jilada/Github/CS726-SLAMRobot/workspace/src /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping /home/jilada/Github/CS726-SLAMRobot/workspace/build /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : slam_gmapping/gmapping/CMakeFiles/_run_tests_gmapping_rostest_test_basic_localization_symmetry.launch.dir/depend
 

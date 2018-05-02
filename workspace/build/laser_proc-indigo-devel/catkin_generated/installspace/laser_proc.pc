@@ -1,8 +1,0 @@
-prefix=/home/robot/Desktop/workspace/install
-
-Name: laser_proc
-Description: Description of laser_proc
-Version: 0.1.4
-Cflags: -I/home/robot/Desktop/workspace/install/include
-Libs: -L/home/robot/Desktop/workspace/install/lib -llaser_proc_library -llaser_publisher -llaser_transport -llaser_proc_ROS -lLaserProcNodelet
-Requires: roscpp sensor_msgs rosconsole nodelet

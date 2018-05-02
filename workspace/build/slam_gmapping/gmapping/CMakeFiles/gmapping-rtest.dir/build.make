@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robot/Desktop/workspace/src
+CMAKE_SOURCE_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robot/Desktop/workspace/build
+CMAKE_BINARY_DIR = /home/jilada/Github/CS726-SLAMRobot/workspace/build
 
 # Include any dependencies generated for this target.
 include slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/depend.make
@@ -58,17 +58,17 @@ include slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/progress.make
 include slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/flags.make
 
 slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o: slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/flags.make
-slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o: /home/robot/Desktop/workspace/src/slam_gmapping/gmapping/test/rtest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/robot/Desktop/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o"
-	cd /home/robot/Desktop/workspace/build/slam_gmapping/gmapping && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o -c /home/robot/Desktop/workspace/src/slam_gmapping/gmapping/test/rtest.cpp
+slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o: /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping/test/rtest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o -c /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping/test/rtest.cpp
 
 slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.i"
-	cd /home/robot/Desktop/workspace/build/slam_gmapping/gmapping && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/robot/Desktop/workspace/src/slam_gmapping/gmapping/test/rtest.cpp > CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.i
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping/test/rtest.cpp > CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.i
 
 slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.s"
-	cd /home/robot/Desktop/workspace/build/slam_gmapping/gmapping && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/robot/Desktop/workspace/src/slam_gmapping/gmapping/test/rtest.cpp -o CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.s
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping/test/rtest.cpp -o CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.s
 
 slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o.requires:
 
@@ -88,59 +88,60 @@ gmapping__rtest_OBJECTS = \
 # External object files for target gmapping-rtest
 gmapping__rtest_EXTERNAL_OBJECTS =
 
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/build.make
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libnodeletlib.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libbondcpp.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libuuid.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libclass_loader.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/libPocoFoundation.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libroslib.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librospack.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libtinyxml.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /home/robot/Desktop/workspace/devel/lib/libgridfastslam.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /home/robot/Desktop/workspace/devel/lib/libscanmatcher.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /home/robot/Desktop/workspace/devel/lib/libsensor_range.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /home/robot/Desktop/workspace/devel/lib/libsensor_odometry.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /home/robot/Desktop/workspace/devel/lib/libutils.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libtf.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libtf2_ros.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libactionlib.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libmessage_filters.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libroscpp.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libtf2.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librosconsole.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librostime.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libcpp_common.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librosbag_storage.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libroslz4.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/liblz4.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: gtest/libgtest.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: /home/robot/Desktop/workspace/devel/lib/libsensor_base.so
-/home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest: slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/robot/Desktop/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest"
-	cd /home/robot/Desktop/workspace/build/slam_gmapping/gmapping && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gmapping-rtest.dir/link.txt --verbose=$(VERBOSE)
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/test/rtest.cpp.o
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/build.make
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libnodeletlib.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libbondcpp.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libuuid.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libclass_loader.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/libPocoFoundation.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libroslib.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librospack.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libpython2.7.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libtinyxml.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libgridfastslam.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libsensor_range.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libsensor_odometry.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libutils.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libtf.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libtf2_ros.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libactionlib.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libmessage_filters.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libroscpp.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libtf2.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librosconsole.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librostime.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libcpp_common.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/librosbag_storage.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /opt/ros/kinetic/lib/libroslz4.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /usr/lib/x86_64-linux-gnu/liblz4.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: gtest/gtest/libgtest.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libsensor_base.so
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest: slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gmapping-rtest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/build: /home/robot/Desktop/workspace/devel/lib/gmapping/gmapping-rtest
+slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/build: /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/gmapping/gmapping-rtest
 
 .PHONY : slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/build
 
@@ -149,10 +150,10 @@ slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/requires: slam_gmapping/gma
 .PHONY : slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/requires
 
 slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/clean:
-	cd /home/robot/Desktop/workspace/build/slam_gmapping/gmapping && $(CMAKE_COMMAND) -P CMakeFiles/gmapping-rtest.dir/cmake_clean.cmake
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping && $(CMAKE_COMMAND) -P CMakeFiles/gmapping-rtest.dir/cmake_clean.cmake
 .PHONY : slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/clean
 
 slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/depend:
-	cd /home/robot/Desktop/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robot/Desktop/workspace/src /home/robot/Desktop/workspace/src/slam_gmapping/gmapping /home/robot/Desktop/workspace/build /home/robot/Desktop/workspace/build/slam_gmapping/gmapping /home/robot/Desktop/workspace/build/slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jilada/Github/CS726-SLAMRobot/workspace/src /home/jilada/Github/CS726-SLAMRobot/workspace/src/slam_gmapping/gmapping /home/jilada/Github/CS726-SLAMRobot/workspace/build /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping /home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : slam_gmapping/gmapping/CMakeFiles/gmapping-rtest.dir/depend
 

@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/get_multiecho.dir/current/samples/get_multiecho.c.o  -o /home/robot/Desktop/workspace/devel/lib/urg_c/get_multiecho -rdynamic /home/robot/Desktop/workspace/devel/lib/libopen_urg_sensor.so /home/robot/Desktop/workspace/devel/lib/libliburg_c.so -lrt -lm -Wl,-rpath,/home/robot/Desktop/workspace/devel/lib: 

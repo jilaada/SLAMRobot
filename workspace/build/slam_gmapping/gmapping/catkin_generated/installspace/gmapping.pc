@@ -1,8 +1,8 @@
-prefix=/home/robot/Desktop/workspace/install
+prefix=/home/jilada/Github/CS726-SLAMRobot/workspace/install
 
 Name: gmapping
 Description: Description of gmapping
-Version: 1.3.10
+Version: 1.3.9
 Cflags: 
-Libs: -L/home/robot/Desktop/workspace/install/lib 
+Libs: -L/home/jilada/Github/CS726-SLAMRobot/workspace/install/lib 
 Requires: 

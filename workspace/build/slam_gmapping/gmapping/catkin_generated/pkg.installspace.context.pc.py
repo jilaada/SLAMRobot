@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "gmapping"
-PROJECT_SPACE_DIR = "/home/robot/Desktop/workspace/install"
-PROJECT_VERSION = "1.3.10"
+PROJECT_SPACE_DIR = "/home/jilada/Github/CS726-SLAMRobot/workspace/install"
+PROJECT_VERSION = "1.3.9"

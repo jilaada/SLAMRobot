@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/scanmatcher.dir/scanmatcher.cpp.o"
   "CMakeFiles/scanmatcher.dir/scanmatcherprocessor.cpp.o"
   "CMakeFiles/scanmatcher.dir/smmap.cpp.o"
-  "/home/robot/Desktop/workspace/devel/lib/libscanmatcher.pdb"
-  "/home/robot/Desktop/workspace/devel/lib/libscanmatcher.so"
+  "/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.pdb"
+  "/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/libscanmatcher.so"
 )
 
 # Per-language clean rules from dependency scanning.

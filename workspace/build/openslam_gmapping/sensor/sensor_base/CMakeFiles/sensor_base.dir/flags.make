@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC
 
 CXX_DEFINES = -DROS_BUILD_SHARED_LIBS=1 -Dsensor_base_EXPORTS
 
-CXX_INCLUDES = -I/home/robot/Desktop/workspace/src/openslam_gmapping/include -I/home/robot/Desktop/workspace/src/openslam_gmapping/sensor/sensor_base/. 
+CXX_INCLUDES = -I/home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/include -I/home/jilada/Github/CS726-SLAMRobot/workspace/src/openslam_gmapping/sensor/sensor_base/. 
 

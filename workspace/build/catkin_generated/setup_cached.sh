@@ -7,7 +7,5 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/robot/Desktop/workspace/devel:$CMAKE_PREFIX_PATH"
-export PWD="/home/robot/Desktop/workspace/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/robot/Desktop/workspace/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/robot/Desktop/workspace/src:$ROS_PACKAGE_PATH"
+export PKG_CONFIG_PATH="/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PWD="/home/jilada/Github/CS726-SLAMRobot/workspace/build"

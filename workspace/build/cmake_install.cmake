@@ -1,8 +1,8 @@
-# Install script for directory: /home/robot/Desktop/workspace/src
+# Install script for directory: /home/jilada/Github/CS726-SLAMRobot/workspace/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/robot/Desktop/workspace/install")
+  set(CMAKE_INSTALL_PREFIX "/home/jilada/Github/CS726-SLAMRobot/workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,87 +44,83 @@ endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/robot/Desktop/workspace/install/_setup_util.py")
+   "/home/jilada/Github/CS726-SLAMRobot/workspace/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/robot/Desktop/workspace/install" TYPE PROGRAM FILES "/home/robot/Desktop/workspace/build/catkin_generated/installspace/_setup_util.py")
+file(INSTALL DESTINATION "/home/jilada/Github/CS726-SLAMRobot/workspace/install" TYPE PROGRAM FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/build/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/robot/Desktop/workspace/install/env.sh")
+   "/home/jilada/Github/CS726-SLAMRobot/workspace/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/robot/Desktop/workspace/install" TYPE PROGRAM FILES "/home/robot/Desktop/workspace/build/catkin_generated/installspace/env.sh")
+file(INSTALL DESTINATION "/home/jilada/Github/CS726-SLAMRobot/workspace/install" TYPE PROGRAM FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/build/catkin_generated/installspace/env.sh")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/robot/Desktop/workspace/install/setup.bash")
+   "/home/jilada/Github/CS726-SLAMRobot/workspace/install/setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/robot/Desktop/workspace/install" TYPE FILE FILES "/home/robot/Desktop/workspace/build/catkin_generated/installspace/setup.bash")
+file(INSTALL DESTINATION "/home/jilada/Github/CS726-SLAMRobot/workspace/install" TYPE FILE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/build/catkin_generated/installspace/setup.bash")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/robot/Desktop/workspace/install/setup.sh")
+   "/home/jilada/Github/CS726-SLAMRobot/workspace/install/setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/robot/Desktop/workspace/install" TYPE FILE FILES "/home/robot/Desktop/workspace/build/catkin_generated/installspace/setup.sh")
+file(INSTALL DESTINATION "/home/jilada/Github/CS726-SLAMRobot/workspace/install" TYPE FILE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/build/catkin_generated/installspace/setup.sh")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/robot/Desktop/workspace/install/setup.zsh")
+   "/home/jilada/Github/CS726-SLAMRobot/workspace/install/setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/robot/Desktop/workspace/install" TYPE FILE FILES "/home/robot/Desktop/workspace/build/catkin_generated/installspace/setup.zsh")
+file(INSTALL DESTINATION "/home/jilada/Github/CS726-SLAMRobot/workspace/install" TYPE FILE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/build/catkin_generated/installspace/setup.zsh")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/robot/Desktop/workspace/install/.rosinstall")
+   "/home/jilada/Github/CS726-SLAMRobot/workspace/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/robot/Desktop/workspace/install" TYPE FILE FILES "/home/robot/Desktop/workspace/build/catkin_generated/installspace/.rosinstall")
+file(INSTALL DESTINATION "/home/jilada/Github/CS726-SLAMRobot/workspace/install" TYPE FILE FILES "/home/jilada/Github/CS726-SLAMRobot/workspace/build/catkin_generated/installspace/.rosinstall")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/robot/Desktop/workspace/build/gtest/cmake_install.cmake")
-  include("/home/robot/Desktop/workspace/build/openslam_gmapping/cmake_install.cmake")
-  include("/home/robot/Desktop/workspace/build/slam_gmapping/slam_gmapping/cmake_install.cmake")
-  include("/home/robot/Desktop/workspace/build/urg_c-master/cmake_install.cmake")
-  include("/home/robot/Desktop/workspace/build/laser_proc-indigo-devel/cmake_install.cmake")
-  include("/home/robot/Desktop/workspace/build/robot_driver/cmake_install.cmake")
-  include("/home/robot/Desktop/workspace/build/slam_gmapping/gmapping/cmake_install.cmake")
-  include("/home/robot/Desktop/workspace/build/rosaria/cmake_install.cmake")
-  include("/home/robot/Desktop/workspace/build/urg_node-indigo-devel/cmake_install.cmake")
+  include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/gtest/cmake_install.cmake")
+  include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/cmake_install.cmake")
+  include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/slam_gmapping/cmake_install.cmake")
+  include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/robot_driver/cmake_install.cmake")
+  include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping/cmake_install.cmake")
 
 endif()
 
@@ -136,5 +132,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/robot/Desktop/workspace/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/jilada/Github/CS726-SLAMRobot/workspace/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
