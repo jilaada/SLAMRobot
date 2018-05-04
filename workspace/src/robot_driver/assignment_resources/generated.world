@@ -1,0 +1,81 @@
+# milliseconds per update step
+interval_sim 50
+
+window
+(
+  size [ 400 400 ]
+  # camera options
+  center [ 0 0 ]
+  rotate [ 0 0 ]
+  scale 60
+
+)
+
+define border model
+(
+  color "black"
+)
+
+define marker model
+(
+  size [0.1 0.1 0.500]
+  color "red"
+)
+
+define rectangle model
+(  
+  color "random"
+)
+
+define circle model
+(
+  bitmap "circle.png"
+  color "random"
+)
+
+define myLaser ranger
+(
+  sensor( range [ 0.02 5.6 ] fov 180.0 samples 512 )
+  size [0.100 0.100 0.100]
+  color "black"
+  block(
+	points 4
+	point[0] [0 0]
+	point[1] [0.1 0]
+	point[2] [0.1 0.1]
+	point[3] [0 0.1]
+	z [0 0.1]
+	)
+)
+
+define myRobot position
+(
+    size [0.460 0.460 0.250]
+    drive "diff"
+    myLaser(pose [ 0.280 0.000 -0.200 0.000 ])  
+)
+
+# throw in a robot
+myRobot( pose [ 0.5 0 0.000 0.000 ] origin [ 0.000 0.000 0.000 0.000 ] name "bob" color "random")
+
+
+#circle(
+#  pose [0 0 0 0] 
+#  size [0.3 0.3 0.500]
+#)
+
+#rectangle(
+#  pose [0 0 0 45] 
+#  size [0.3 0.3 0.500]
+#)
+
+#phsical border
+border(color "red" pose [ 5 -3 0 0 ] size [10 0.1 0.5])
+border(color "red" pose [ 5 3 0 0 ]  size [10 0.1 0.5])
+border(color "red" pose [ 10 0 0 0 ] size [0.1 6 0.5])
+border(color "red" pose [ 0 0 0 0 ]  size [0.1 6 0.5])
+rectangle(pose [8.26 -1.45 0 176] size [0.22 0.84 0.500])
+rectangle(pose [4.74 0.83 0 93] size [0.2 0.24 0.500])
+circle(pose [5.92 -0.38 0 0] size [0.16 0.16 0.500])
+rectangle(pose [2.69 -0.6 0 142] size [0.24 0.34 0.500])
+rectangle(pose [2.35 -2.02 0 16] size [0.26 0.8 0.500])

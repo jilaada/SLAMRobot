@@ -1,0 +1,77 @@
+# milliseconds per update step
+interval_sim 50
+resolution 0.001
+
+window
+(
+  size [ 400 400 ]
+  # camera options
+  center [ 0.000 0.000 ]
+  rotate [ 0.000 0.000 ]
+  scale 60.000
+
+)
+
+define border model
+(
+  color "red"
+)
+
+define marker model
+(
+  size [0.1 0.1 0.500]
+  color "red"
+)
+
+define rectangle model
+(  
+  color "random"
+)
+
+define circle model
+(
+  bitmap "circle.png"
+  color "random"
+)
+
+define myLaser ranger
+(
+  sensor( range [ 0.02 5.6 ] fov 180.0 samples 512 )
+  size [0.100 0.100 0.100]
+  color "black"
+  block(
+	points 4
+	point[0] [0 0]
+	point[1] [0.1 0]
+	point[2] [0.1 0.1]
+	point[3] [0 0.1]
+	z [0 0.1]
+	)
+)
+
+define myRobot position
+(
+    size [0.460 0.460 0.250]
+    drive "diff"
+    myLaser(pose [ 0.280 0.000 -0.200 0.000 ])  
+)
+
+# throw in a robot
+myRobot( pose [ 0.000 -1.500 0.000 90.000 ] origin [ 0.000 0.000 0.000 90.000 ] name "bob" color "random")
+
+#Border
+
+border(pose [ 0.000 -2.500 0.000 90.000 ] size [0.100 5.000 0.500])
+border(pose [ 0.000 2.500 0.000 90.000 ] size [0.100 5.000 0.500])
+border( pose [ 2.500 0.000 0.000 0.000 ] size [0.100 5.000 0.500])
+border( pose [ -2.500 0.000 0.000 0.000 ] size [0.100 5.000 0.500])
+
+#circle(
+#  pose [0 0 0 0] 
+#  size [0.3 0.3 0.500]
+#)
+
+rectangle(
+  pose [0.000 0.000 0.000 45.000] 
+  size [0.300 0.300 0.500]
+)
