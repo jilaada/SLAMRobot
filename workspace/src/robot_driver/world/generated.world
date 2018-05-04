@@ -1,0 +1,92 @@
+# milliseconds per update step
+interval_sim 50
+resolution 0.001
+
+window
+(
+  size [ 400 400 ]
+  # camera options
+  center [ 0 0 ]
+  rotate [ 0 0 ]
+  scale 60
+
+)
+
+define border model
+(
+  color "black"
+)
+
+define marker model
+(
+  size [0.1 0.1 0.500]
+  color "red"
+)
+
+define rectangle model
+(  
+  color "random"
+)
+
+define circle model
+(
+  bitmap "circle.png"
+  color "random"
+)
+
+define myLaser ranger
+(
+  sensor( range [ 0.02 5.6 ] fov 180.0 samples 512 )
+  size [0.100 0.100 0.100]
+  color "black"
+  block(
+	points 4
+	point[0] [0 0]
+	point[1] [0.1 0]
+	point[2] [0.1 0.1]
+	point[3] [0 0.1]
+	z [0 0.1]
+	)
+)
+
+define myRobot position
+(
+    size [0.460 0.460 0.250]
+    drive "diff"
+    myLaser(pose [ 0.280 0.000 -0.200 0.000 ])  
+)
+
+# throw in a robot
+myRobot( pose [ 0.5 0 0.000 0.000 ] origin [ 0.000 0.000 0.000 0.000 ] name "bob" color "random")
+
+
+#circle(
+#  pose [0 0 0 0] 
+#  size [0.3 0.3 0.500]
+#)
+
+#rectangle(
+#  pose [0 0 0 45] 
+#  size [0.3 0.3 0.500]
+#)
+
+#phsical border
+border(color "red" pose [ 5 -3 0 0 ] size [10 0.1 0.5])
+border(color "red" pose [ 5 3 0 0 ]  size [10 0.1 0.5])
+border(color "red" pose [ 10 0 0 0 ] size [0.1 6 0.5])
+border(color "red" pose [ 0 0 0 0 ]  size [0.1 6 0.5])
+rectangle(pose [2.05 1.39 0 70] size [0.22 0.36 0.500])
+circle(pose [3.28 2.16 0 0] size [0.48 0.48 0.500])
+rectangle(pose [6.16 0.89 0 149] size [0.86 0.14 0.500])
+rectangle(pose [5.49 -0.97 0 162] size [0.86 0.32 0.500])
+rectangle(pose [9.26 -0.34 0 81] size [0.16 0.36 0.500])
+rectangle(pose [2.79 -0.77 0 24] size [0.62 0.48 0.500])
+circle(pose [7.14 -2 0 0] size [0.52 0.52 0.500])
+rectangle(pose [1.57 -2.12 0 57] size [0.38 0.7 0.500])
+rectangle(pose [8.62 1.52 0 29] size [1 0.84 0.500])
+circle(pose [0.93 1.48 0 0] size [0.24 0.24 0.500])
+rectangle(pose [4.43 -0.47 0 22] size [0.14 0.16 0.500])
+circle(pose [3.2 0.6 0 0] size [0.4 0.4 0.500])
+circle(pose [4.6 1 0 0] size [0.2 0.2 0.500])
+rectangle(pose [7.68 -0.39 0 119] size [0.28 0.98 0.500])
+rectangle(pose [8.86 -2.16 0 149] size [0.3 0.16 0.500])

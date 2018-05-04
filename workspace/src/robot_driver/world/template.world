@@ -14,7 +14,7 @@ window
 
 define border model
 (
-  color "red"
+  color "black"
 )
 
 define marker model
@@ -57,21 +57,16 @@ define myRobot position
 )
 
 # throw in a robot
-myRobot( pose [ 0.000 -1.5 0.000 90.000 ] origin [ 0.000 0.000 0.000 90.000 ] name "bob" color "random")
+myRobot( pose [ 0.5 0 0.000 0.000 ] origin [ 0.000 0.000 0.000 0.000 ] name "bob" color "random")
 
-#Border
 
-border(pose [ 0.000 -2.500 0.000 90.000 ] size [0.100 5.000 0.500])
-border(pose [ 0.000 2.500 0.000 90.000 ] size [0.100 5.000 0.500])
-border( pose [ 2.500 0.000 0.000 0.000 ] size [0.100 5.000 0.500])
-border( pose [ -2.500 0.000 0.000 0.000 ] size [0.100 5.000 0.500])
-
-circle(
-  pose [0 0 0 0] 
-  size [0.32 0.32 0.500]
-)
+#circle(
+#  pose [0 0 0 0] 
+#  size [0.3 0.3 0.500]
+#)
 
 #rectangle(
 #  pose [0 0 0 45] 
 #  size [0.3 0.3 0.500]
 #)
+

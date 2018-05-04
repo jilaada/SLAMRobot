@@ -18,6 +18,14 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	// Rotating buffer array
 	int bufferStatus[BUFFER_SIZE] = { };
 	int bufferPointer = 0;
+	detectionType currentType = noEdge;
+	detectionType previousType = noEdge;
+	bool detecting = false;
+	int startSearchIndex = 0;
+	int endSearchIndex = 0;
+	
+	// 
+	int detectedIndex = 0;
 	
 	float currentAngle = 3.14;
 	
@@ -42,10 +50,35 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 			currentStatus = currentStatus;
 		}
 	
-		if (abs(laserScanData->ranges[j] - laserScanData->ranges[j+1]) > 0.3) {
-			// Gap is present - potential for object
+		if (abs(laserScanData->ranges[j] - laserScanData->ranges[j+1]) > CLEARANCE) {
+			// Falling edge detected
 			currentStatus = 3;
-			// Clear the buffer?
+			previousType = currentType;
+			currentType = ((laserScanData->ranges[j] - laserScanData->ranges[j+1]) > CLEARANCE) ? fallingEdge : risingEdge;
+		} 
+
+		if (currentStatus != previousStatus) {
+			if (detecting && (currentStatus == 1)) {
+				// Point of infection
+				// j-1 -> j will provide decreasing measurement, j -> j+1 will provide increasing measurement
+				// Angle in between will be used to determine if circle or square
+				
+			}
+			
+			if ((currentStatus == 3)) {
+				// Object detected
+				// Eventually this will need to be placed into a linked list for defined searching
+				if ((previousType == fallingEdge) && (currentType == risingEdge)) {
+					detecting = !detecting;
+					cout << "OBJECT DETECTED\n";
+					endSearchIndex = j;
+				} else if (currentType == fallingEdge) {
+					detecting = !detecting;
+					cout << "POTENTIAL OBJECT DETECTED : " << detecting << "\n";
+					startSearchIndex = j;
+				}
+			}
+			cout << currentStatus << " : " << laserScanData->ranges[j] << "\n"; 
 		}
 		bufferStatus[bufferPointer] = currentStatus;
 		incrementPointer(bufferPointer);

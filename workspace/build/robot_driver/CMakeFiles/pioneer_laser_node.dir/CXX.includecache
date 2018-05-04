@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/pioneerLaser.cpp
+/home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/globals.h
+
+/home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/includes.h
 ros/ros.h
 /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/ros/ros.h
 geometry_msgs/Twist.h
@@ -15,6 +17,18 @@ sensor_msgs/LaserScan.h
 /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/sensor_msgs/LaserScan.h
 nav_msgs/Odometry.h
 /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/nav_msgs/Odometry.h
+iostream
+-
+fstream
+-
+cmath
+-
+globals.h
+/home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/globals.h
+
+/home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/pioneerLaser.cpp
+includes.h
+/home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/includes.h
 
 /opt/ros/kinetic/include/geometry_msgs/Point.h
 string

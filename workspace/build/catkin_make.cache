@@ -1,2 +1,2 @@
-openslam_gmapping:robot_driver:slam_gmapping/gmapping:slam_gmapping/slam_gmapping
+robot_driver
 -DCATKIN_DEVEL_PREFIX=/home/jilada/Github/CS726-SLAMRobot/workspace/devel -DCMAKE_INSTALL_PREFIX=/home/jilada/Github/CS726-SLAMRobot/workspace/install -G Unix Makefiles

@@ -10,3 +10,10 @@
 
 // Including helper functions
 #include "globals.h"
+
+enum detectionType { 
+	noEdge,
+	fallingEdge,
+	risingEdge
+};
+	

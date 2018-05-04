@@ -117,10 +117,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/gtest/cmake_install.cmake")
-  include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/openslam_gmapping/cmake_install.cmake")
-  include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/slam_gmapping/cmake_install.cmake")
   include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/robot_driver/cmake_install.cmake")
-  include("/home/jilada/Github/CS726-SLAMRobot/workspace/build/slam_gmapping/gmapping/cmake_install.cmake")
 
 endif()
 
