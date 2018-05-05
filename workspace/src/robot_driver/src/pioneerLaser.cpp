@@ -95,28 +95,41 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 
 	// Object has been found - perform test for type of object, size and location:
 	if (endSearchIndex != 0) {
-		float angle = determinePose(laserScanData->ranges[middleSearchIndex-RANGE], (-1.5708 + (middleSearchIndex-RANGE)*laserScanData->angle_increment), laserScanData->ranges[middleSearchIndex], (-1.5708 + middleSearchIndex*laserScanData->angle_increment), laserScanData->ranges[middleSearchIndex+RANGE], (-1.5708 + (middleSearchIndex+RANGE)*laserScanData->angle_increment));
-		float x = 0;
-		float y = 0;
-		if (angle < ANGLE_90) {
-			// Check if the lengths are uneven using cosine rule - set a tolerance
-			x = cosineRule(laserScanData->ranges[startSearchIndex+1], laserScanData->ranges[middleSearchIndex], (middleSearchIndex-startSearchIndex-1)*laserScanData->angle_increment);
-			y = cosineRule(laserScanData->ranges[endSearchIndex], laserScanData->ranges[middleSearchIndex], (endSearchIndex-middleSearchIndex)*laserScanData->angle_increment);
-			cout << "x: " << laserScanData->ranges[endSearchIndex] << " y: " << laserScanData->ranges[middleSearchIndex] << "\n";
-			cout << "Tolerance Checking: \n";
-			if ((x > y-TOLERANCE) && (x < y+TOLERANCE)) {
-				// Equal lengths - this is square
-				cout << "Found a square\n";
-			} else {
-				cout << "Found a rectangle\n";
-			}
-		} else if (angle > ANGLE_180) {
-			// Determine the gradient changes
-			if (constantGradient) {
-				// Potential for vertex of square OR rectangle therefore unsure
-				cout << "More Info Required!\n";
-			} else {
-				cout << "Found a circle\n";
+		if (((middleSearchIndex - startSearchIndex) > RANGE*FACTOR)  && ((endSearchIndex - middleSearchIndex) > RANGE*FACTOR)) {
+			float angle = determinePose(laserScanData->ranges[middleSearchIndex-RANGE], (-1.5708 + (middleSearchIndex-RANGE)*laserScanData->angle_increment), laserScanData->ranges[middleSearchIndex], (-1.5708 + middleSearchIndex*laserScanData->angle_increment), laserScanData->ranges[middleSearchIndex+RANGE], (-1.5708 + (middleSearchIndex+RANGE)*laserScanData->angle_increment));
+			float x = 0;
+			float y = 0;
+			if (angle < ANGLE_90) {
+				// Check if the lengths are uneven using cosine rule - set a tolerance
+				x = cosineRule(laserScanData->ranges[startSearchIndex+1], laserScanData->ranges[middleSearchIndex], (middleSearchIndex-startSearchIndex-1)*laserScanData->angle_increment);
+				y = cosineRule(laserScanData->ranges[endSearchIndex], laserScanData->ranges[middleSearchIndex], (endSearchIndex-middleSearchIndex)*laserScanData->angle_increment);
+				cout << "x: " << laserScanData->ranges[endSearchIndex] << " y: " << laserScanData->ranges[middleSearchIndex] << "\n";
+				cout << "Tolerance Checking: \n";
+				if ((x > y-TOLERANCE) && (x < y+TOLERANCE)) {
+					// Equal lengths - this is square
+					cout << "Found a square!\n" << "x: " << x << " : " << "y: " << y << "\n";
+				} else {
+					cout << "Found a rectangle\n" << "x: " << x << " : " << "y: " << y << "\n";
+				}
+			} else if (angle > ANGLE_180) {
+				// Determine the gradient changes
+				int index = 0;
+				if ((middleSearchIndex - startSearchIndex) > (endSearchIndex - middleSearchIndex)) {
+					// Search between start and middle
+					index = (middleSearchIndex - startSearchIndex)/2 + startSearchIndex;
+				} else {
+					// Search between middle and end
+					index = (endSearchIndex - middleSearchIndex)/2 + middleSearchIndex;
+				}
+				// Determine the constantGradient parameter
+				float ignoreValue = determinePose(laserScanData->ranges[index-RANGE], (-1.5708 + (index-RANGE)*laserScanData->angle_increment), laserScanData->ranges[index], (-1.5708 + index*laserScanData->angle_increment), laserScanData->ranges[index+RANGE], (-1.5708 + (index+RANGE)*laserScanData->angle_increment));
+			
+				if (constantGradient) {
+					// Potential for vertex of square OR rectangle therefore unsure
+					cout << "More Info Required!\n";
+				} else {
+					cout << "Found a circle\n" << "Radius: " << cosineRule(laserScanData->ranges[startSearchIndex+1], laserScanData->ranges[endSearchIndex], (endSearchIndex-startSearchIndex-1)*laserScanData->angle_increment) << "\n";
+				}
 			}
 		}
 	}
@@ -209,9 +222,11 @@ float determinePose(float distanceA, float angleA, float distanceB, float angleB
 	cout << "Angle: " << cross(A, C) << "\n";
 	cout << (yA-yB)/abs(xA-xB) << "\n";
 	cout << (yB-yC)/abs(xB-xC) << "\n";
-	if ((yA-yB)/abs(xA-xB) == (yB-yC)/abs(xB-xC)) {
+	if (((yA-yB)/abs(xA-xB) < ((yB-yC)/abs(xB-xC))+TOLERANCE) && ((yA-yB)/abs(xA-xB) > ((yB-yC)/abs(xB-xC))-TOLERANCE)) {
 		// Constant gradient detected
 		constantGradient = true;
+	} else {
+		constantGradient = false;
 	}
 
 	return abs(cross(A,C));
@@ -226,5 +241,7 @@ float cross(Coord A, Coord C) {
 float cosineRule(float distanceA, float distanceB, float angleC) { 
 	return sqrt(pow(distanceA, 2.0) + pow(distanceB, 2.0) - 2*distanceA*distanceB*cos(angleC));
 }
+
+
 
 

@@ -5,10 +5,13 @@
 #define CLEARANCE 0.3
 
 // Defining the region of search
-#define RANGE 10
+#define RANGE 5
+
+// Define scale factor to ensure that the points read are eligible for algorithm
+#define FACTOR 3
 
 // Circle tolerance
-#define ANGLE_180 2.617994
+#define ANGLE_180 2.7925
 
 // Square/Rectangle tolerance
 #define ANGLE_90 1.745329
