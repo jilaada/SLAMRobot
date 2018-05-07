@@ -18,3 +18,10 @@
 
 // Difference between lengths
 #define TOLERANCE 0.05
+
+// Laser pose
+#define LASER_POSE 0.28
+
+// Defining max and min functions
+#define MAX(a, b) (a > b)?a:b 
+#define MIN(a, b) (a < b)?a:b

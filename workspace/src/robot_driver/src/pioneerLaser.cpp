@@ -8,6 +8,7 @@ geometry_msgs::Twist velocityCommand;
 void incrementPointer(int &pointer);
 float cross(Coord A, Coord C);
 float cosineRule(float distanceA, float distanceB, float angleC);
+void determineLocation(float distanceA, float angleA, float distanceB, float angleB);
 float determinePose(float distanceA, float angleA, float distanceB, float angleB, float distanceC, float angleC);
 
 // Globals (odometry)
@@ -101,15 +102,17 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 			float y = 0;
 			if (angle < ANGLE_90) {
 				// Check if the lengths are uneven using cosine rule - set a tolerance
+				
 				x = cosineRule(laserScanData->ranges[startSearchIndex+1], laserScanData->ranges[middleSearchIndex], (middleSearchIndex-startSearchIndex-1)*laserScanData->angle_increment);
 				y = cosineRule(laserScanData->ranges[endSearchIndex], laserScanData->ranges[middleSearchIndex], (endSearchIndex-middleSearchIndex)*laserScanData->angle_increment);
-				cout << "x: " << laserScanData->ranges[endSearchIndex] << " y: " << laserScanData->ranges[middleSearchIndex] << "\n";
-				cout << "Tolerance Checking: \n";
+				
 				if ((x > y-TOLERANCE) && (x < y+TOLERANCE)) {
 					// Equal lengths - this is square
-					cout << "Found a square!\n" << "x: " << x << " : " << "y: " << y << "\n";
+					cout << "Found a square!    " << "x: " << x << " : " << "y: " << y << "\n";
+					determineLocation(laserScanData->ranges[startSearchIndex+1], ((startSearchIndex+1)*laserScanData->angle_increment)-1.5708, laserScanData->ranges[endSearchIndex], ((endSearchIndex)*laserScanData->angle_increment)-1.5708);
 				} else {
-					cout << "Found a rectangle\n" << "x: " << x << " : " << "y: " << y << "\n";
+					cout << "Found a rectangle! " << "x: " << x << " : " << "y: " << y << "\n";
+					determineLocation(laserScanData->ranges[startSearchIndex+1], ((startSearchIndex+1)*laserScanData->angle_increment)-1.5708, laserScanData->ranges[endSearchIndex], ((endSearchIndex)*laserScanData->angle_increment)-1.5708);
 				}
 			} else if (angle > ANGLE_180) {
 				// Determine the gradient changes
@@ -128,10 +131,13 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 					// Potential for vertex of square OR rectangle therefore unsure
 					cout << "More Info Required!\n";
 				} else {
-					cout << "Found a circle\n" << "Radius: " << cosineRule(laserScanData->ranges[startSearchIndex+1], laserScanData->ranges[endSearchIndex], (endSearchIndex-startSearchIndex-1)*laserScanData->angle_increment) << "\n";
+					cout << "Found a circle     " << "Radius: " << cosineRule(laserScanData->ranges[startSearchIndex+1], laserScanData->ranges[endSearchIndex], (endSearchIndex-startSearchIndex-1)*laserScanData->angle_increment) << "\n";
+					determineLocation(laserScanData->ranges[startSearchIndex+1], ((startSearchIndex+1)*laserScanData->angle_increment)-1.5708, laserScanData->ranges[endSearchIndex], ((endSearchIndex)*laserScanData->angle_increment)-1.5708);
 				}
 			}
 		}
+		
+		
 	}
 }
 
@@ -200,13 +206,6 @@ float determinePose(float distanceA, float angleA, float distanceB, float angleB
 	float xC = distanceC * cos(angleC);
 	float yC = abs(distanceC * sin(angleC));
 	
-	//cout << "distancea: " << xA << "\n";
-	//cout << "distanceb: " << xB << "\n";
-	//cout << "distancec: " << xC << "\n";
-	//cout << "distancea: " << yA << "\n";
-	//cout << "distanceb: " << yB << "\n";
-	//cout << "distancec: " << yC << "\n";
-	
 	Coord A;
 	Coord C;
 	
@@ -214,14 +213,7 @@ float determinePose(float distanceA, float angleA, float distanceB, float angleB
 	A.y = -(abs(yA-yB));
 	C.x = xC - xB;
 	C.y = abs(yC-yB);
-
-	//cout << "Ax: " << A.x << "\n";
-	//cout << "Ay: " << A.y << "\n";
-	//cout << "Cx: " << C.x << "\n";
-	//cout << "Cy: " << C.y << "\n";
-	cout << "Angle: " << cross(A, C) << "\n";
-	cout << (yA-yB)/abs(xA-xB) << "\n";
-	cout << (yB-yC)/abs(xB-xC) << "\n";
+	
 	if (((yA-yB)/abs(xA-xB) < ((yB-yC)/abs(xB-xC))+TOLERANCE) && ((yA-yB)/abs(xA-xB) > ((yB-yC)/abs(xB-xC))-TOLERANCE)) {
 		// Constant gradient detected
 		constantGradient = true;
@@ -230,6 +222,26 @@ float determinePose(float distanceA, float angleA, float distanceB, float angleB
 	}
 
 	return abs(cross(A,C));
+}
+
+void determineLocation(float distanceA, float angleA, float distanceB, float angleB) {
+	float xA = distanceA * cos(angleA);
+	float yA = distanceA * sin(angleA);
+	float xB = distanceB * cos(angleB);
+	float yB = distanceB * sin(angleB);
+	cout << "distanceA: " << distanceA << "\n";
+	cout << "angleA: " << angleA << "\n";
+	cout << "distanceB: " << distanceB << "\n";
+	cout << "angleB: " << angleB << "\n";
+	
+	
+	float midX = (MAX(xA, xB) - MIN(xA, xB))/2 + MIN(xA, xB);
+	float midY = (yB - yA)/2 + yA;
+	
+	midX = midX + LASER_POSE;
+	
+	cout << "Location x: " << midX << "\n";
+	cout << "Location y: " << midY << "\n";
 }
 
 float cross(Coord A, Coord C) {
