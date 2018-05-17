@@ -920,7 +920,7 @@ robot_driver/CMakeFiles/pioneer_laser_node.dir/all: robot_driver/CMakeFiles/std_
 robot_driver/CMakeFiles/pioneer_laser_node.dir/all: robot_driver/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/depend
 	$(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=12,13 "Built target pioneer_laser_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=12,13,14 "Built target pioneer_laser_node"
 .PHONY : robot_driver/CMakeFiles/pioneer_laser_node.dir/all
 
 # Include target in all.
@@ -930,7 +930,7 @@ all: robot_driver/CMakeFiles/pioneer_laser_node.dir/all
 
 # Build rule for subdir invocation for target.
 robot_driver/CMakeFiles/pioneer_laser_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 robot_driver/CMakeFiles/pioneer_laser_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles 0
 .PHONY : robot_driver/CMakeFiles/pioneer_laser_node.dir/rule

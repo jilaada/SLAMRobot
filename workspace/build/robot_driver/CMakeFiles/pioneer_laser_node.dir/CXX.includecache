@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/edge.cpp
+edge.hpp
+/home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/edge.hpp
+
 /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/edge.hpp
 
 /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/globals.h

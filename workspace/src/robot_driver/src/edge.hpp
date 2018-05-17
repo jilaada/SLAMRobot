@@ -9,12 +9,9 @@ public:
     /*
     Edge Constructor
     */
-    edge();
+    edge(float startDistance, float middleDistance, float endDistance, int startIndex, int middleIndex, int endIndex);
 	
 	// Declare public functions here:
-	int getIndex();
-	float getDistance();
-	float getAngle();
 	float getCurrentX();
 	float getCurrentY();
     
@@ -33,9 +30,12 @@ private:
     };
 
 	// Declare variables for use here:
-	int index;
-	float distance;
-	float angle;
+	int startIndex;
+	int middleIndex;
+	int endIndex;
+	float startDistance;
+	float middleDistance;
+	float endDistance;
 	float currentX;
 	float currentY; 
     

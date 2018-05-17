@@ -81,14 +81,40 @@ robot_driver/CMakeFiles/pioneer_laser_node.dir/src/pioneerLaser.cpp.o.provides: 
 robot_driver/CMakeFiles/pioneer_laser_node.dir/src/pioneerLaser.cpp.o.provides.build: robot_driver/CMakeFiles/pioneer_laser_node.dir/src/pioneerLaser.cpp.o
 
 
+robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o: robot_driver/CMakeFiles/pioneer_laser_node.dir/flags.make
+robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o: /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/edge.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/robot_driver && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o -c /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/edge.cpp
+
+robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.i"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/robot_driver && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/edge.cpp > CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.i
+
+robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.s"
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/robot_driver && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jilada/Github/CS726-SLAMRobot/workspace/src/robot_driver/src/edge.cpp -o CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.s
+
+robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o.requires:
+
+.PHONY : robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o.requires
+
+robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o.provides: robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o.requires
+	$(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o.provides.build
+.PHONY : robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o.provides
+
+robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o.provides.build: robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o
+
+
 # Object files for target pioneer_laser_node
 pioneer_laser_node_OBJECTS = \
-"CMakeFiles/pioneer_laser_node.dir/src/pioneerLaser.cpp.o"
+"CMakeFiles/pioneer_laser_node.dir/src/pioneerLaser.cpp.o" \
+"CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o"
 
 # External object files for target pioneer_laser_node
 pioneer_laser_node_EXTERNAL_OBJECTS =
 
 /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node: robot_driver/CMakeFiles/pioneer_laser_node.dir/src/pioneerLaser.cpp.o
+/home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node: robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o
 /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node: robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make
 /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node: /opt/ros/kinetic/lib/libroscpp.so
 /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -110,7 +136,7 @@ pioneer_laser_node_EXTERNAL_OBJECTS =
 /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
 /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node: robot_driver/CMakeFiles/pioneer_laser_node.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jilada/Github/CS726-SLAMRobot/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /home/jilada/Github/CS726-SLAMRobot/workspace/devel/lib/robot_driver/pioneer_laser_node"
 	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build/robot_driver && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pioneer_laser_node.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -119,6 +145,7 @@ robot_driver/CMakeFiles/pioneer_laser_node.dir/build: /home/jilada/Github/CS726-
 .PHONY : robot_driver/CMakeFiles/pioneer_laser_node.dir/build
 
 robot_driver/CMakeFiles/pioneer_laser_node.dir/requires: robot_driver/CMakeFiles/pioneer_laser_node.dir/src/pioneerLaser.cpp.o.requires
+robot_driver/CMakeFiles/pioneer_laser_node.dir/requires: robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o.requires
 
 .PHONY : robot_driver/CMakeFiles/pioneer_laser_node.dir/requires
 

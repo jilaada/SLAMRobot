@@ -25,9 +25,7 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	// max angle and min angle of the laser scanner divide by the increment angle of each data point
 	constantGradient = false;
 	float rangeDataNum = 1 + (laserScanData->angle_max - laserScanData->angle_min)  / (laserScanData->angle_increment);
-	// Rotating buffer array
-	int bufferStatus[BUFFER_SIZE] = { };
-	int bufferPointer = 0;
+
 	detectionType currentType = noEdge;
 	detectionType previousType = noEdge;
 	bool detecting = false;
@@ -46,6 +44,7 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	
 	// Go through the laser data
 	for(int j = 0; j < rangeDataNum - 1; ++j) { 
+		//**** Code to detect if increasing or decreasing gradient ****//
 		previousStatus = currentStatus;
 		if (laserScanData->ranges[j] < laserScanData->ranges[j+1]) {
 			// Increasing vertex
@@ -79,19 +78,14 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 				// To store is the diatance and current odometry readings
 				if ((previousType == fallingEdge) && (currentType == risingEdge)) {
 					detecting = !detecting;
-					cout << "OBJECT DETECTED\n";
 					endSearchIndex = j;
 				} else if (currentType == fallingEdge) {
 					detecting = !detecting;
-					cout << "POTENTIAL OBJECT DETECTED : " << detecting << "\n";
 					startSearchIndex = j;
 				}
 			}
-			//cout << currentStatus << " : " << laserScanData->ranges[j] << "\n"; 
 		}
-		// Buffer for noise: to be used later when I actually care about it
-		bufferStatus[bufferPointer] = currentStatus;
-		incrementPointer(bufferPointer);
+		//********************************************************//
 	}
 
 	// Object has been found - perform test for type of object, size and location:
@@ -109,10 +103,10 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 				if ((x > y-TOLERANCE) && (x < y+TOLERANCE)) {
 					// Equal lengths - this is square
 					cout << "Found a square!    " << "x: " << x << " : " << "y: " << y << "\n";
-					determineLocation(laserScanData->ranges[startSearchIndex+1], ((startSearchIndex+1)*laserScanData->angle_increment)-1.5708, laserScanData->ranges[endSearchIndex], ((endSearchIndex)*laserScanData->angle_increment)-1.5708);
+					determineLocation(laserScanData->ranges[startSearchIndex+1], (1.5708-(startSearchIndex+1)*laserScanData->angle_increment), laserScanData->ranges[endSearchIndex], (1.5708-(endSearchIndex)*laserScanData->angle_increment));
 				} else {
 					cout << "Found a rectangle! " << "x: " << x << " : " << "y: " << y << "\n";
-					determineLocation(laserScanData->ranges[startSearchIndex+1], ((startSearchIndex+1)*laserScanData->angle_increment)-1.5708, laserScanData->ranges[endSearchIndex], ((endSearchIndex)*laserScanData->angle_increment)-1.5708);
+					determineLocation(laserScanData->ranges[startSearchIndex+1], (1.5708-(startSearchIndex+1)*laserScanData->angle_increment), laserScanData->ranges[endSearchIndex], (1.5708-(endSearchIndex)*laserScanData->angle_increment));
 				}
 			} else if (angle > ANGLE_180) {
 				// Determine the gradient changes
@@ -131,8 +125,8 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 					// Potential for vertex of square OR rectangle therefore unsure
 					cout << "More Info Required!\n";
 				} else {
-					cout << "Found a circle     " << "Radius: " << cosineRule(laserScanData->ranges[startSearchIndex+1], laserScanData->ranges[endSearchIndex], (endSearchIndex-startSearchIndex-1)*laserScanData->angle_increment) << "\n";
-					determineLocation(laserScanData->ranges[startSearchIndex+1], ((startSearchIndex+1)*laserScanData->angle_increment)-1.5708, laserScanData->ranges[endSearchIndex], ((endSearchIndex)*laserScanData->angle_increment)-1.5708);
+					cout << "Found a circle     " << "Radius: " << cosineRule(laserScanData->ranges[startSearchIndex+1], laserScanData->ranges[endSearchIndex], (endSearchIndex-startSearchIndex-1)*laserScanData->angle_increment)/2 << "\n";
+					determineLocation(laserScanData->ranges[startSearchIndex+1], (1.5708-(startSearchIndex+1)*laserScanData->angle_increment), laserScanData->ranges[endSearchIndex], (1.5708-(endSearchIndex)*laserScanData->angle_increment));
 				}
 			}
 		}
@@ -234,11 +228,17 @@ void determineLocation(float distanceA, float angleA, float distanceB, float ang
 	cout << "distanceB: " << distanceB << "\n";
 	cout << "angleB: " << angleB << "\n";
 	
+	float midX;
 	
-	float midX = (MAX(xA, xB) - MIN(xA, xB))/2 + MIN(xA, xB);
+	if (xA > xB) {
+		midX = (xA-xB)/2 + xB + LASER_POSE;
+	} else if (xB > xA) {
+		midX = (xB-xA)/2 + xA + LASER_POSE;
+	}
+	
 	float midY = (yB - yA)/2 + yA;
 	
-	midX = midX + LASER_POSE;
+	//midX = midX + LASER_POSE + MIN(xA, xB);
 	
 	cout << "Location x: " << midX << "\n";
 	cout << "Location y: " << midY << "\n";

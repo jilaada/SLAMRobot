@@ -1,27 +1,19 @@
 #include "edge.hpp"
 
+using namespace std;
 // TODO: complete the constructor
-edge::edge() {
+edge::edge(float startDistance, float middleDistance, float endDistance, int startIndex, int middleIndex, int endIndex) 
+			: startDistance(startDistance), middleDistance(middleDistance), endDistance(endDistance), startIndex(startIndex), middleIndex(middleIndex), endIndex(endIndex) {	
+	this->currentX = 0;
+	this->currentY = 0;
 }
 
 // Write functions here:
-	int edge::getIndex() {
-		return index;
-	}
 
-	float edge::getDistance() {
-		return distance;
-	}
+float edge::getCurrentX() {
+	return currentX;
+}
 
-	float edge::getAngle() {
-		return angle;
-	}
-
-	float edge::getCurrentX() {
-		return currentX;
-	}
-
-	float edge::getCurrentY() {
-		return currentY;
-	}
+float edge::getCurrentY() {
+	return currentY;
 }

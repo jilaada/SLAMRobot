@@ -405,6 +405,33 @@ pioneer_laser_node/fast:
 	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/build
 .PHONY : pioneer_laser_node/fast
 
+src/edge.o: src/edge.cpp.o
+
+.PHONY : src/edge.o
+
+# target to build an object file
+src/edge.cpp.o:
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o
+.PHONY : src/edge.cpp.o
+
+src/edge.i: src/edge.cpp.i
+
+.PHONY : src/edge.i
+
+# target to preprocess a source file
+src/edge.cpp.i:
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.i
+.PHONY : src/edge.cpp.i
+
+src/edge.s: src/edge.cpp.s
+
+.PHONY : src/edge.s
+
+# target to generate assembly for a file
+src/edge.cpp.s:
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.s
+.PHONY : src/edge.cpp.s
+
 src/pioneerLaser.o: src/pioneerLaser.cpp.o
 
 .PHONY : src/pioneerLaser.o
@@ -461,6 +488,9 @@ help:
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... install"
+	@echo "... src/edge.o"
+	@echo "... src/edge.i"
+	@echo "... src/edge.s"
 	@echo "... src/pioneerLaser.o"
 	@echo "... src/pioneerLaser.i"
 	@echo "... src/pioneerLaser.s"
