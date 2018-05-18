@@ -119,7 +119,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable( pioneer_laser_node src/pioneerLaser.cpp src/edge.cpp)
+add_executable( pioneer_laser_node src/pioneerLaser.cpp src/GridObject.cpp)
 target_link_libraries(pioneer_laser_node ${catkin_LIBRARIES})
 add_dependencies(pioneer_laser_node ${catkin_EXPORTED_TARGETS})
 

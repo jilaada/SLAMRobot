@@ -405,32 +405,32 @@ pioneer_laser_node/fast:
 	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/build
 .PHONY : pioneer_laser_node/fast
 
-src/edge.o: src/edge.cpp.o
+src/GridObject.o: src/GridObject.cpp.o
 
-.PHONY : src/edge.o
+.PHONY : src/GridObject.o
 
 # target to build an object file
-src/edge.cpp.o:
-	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.o
-.PHONY : src/edge.cpp.o
+src/GridObject.cpp.o:
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/GridObject.cpp.o
+.PHONY : src/GridObject.cpp.o
 
-src/edge.i: src/edge.cpp.i
+src/GridObject.i: src/GridObject.cpp.i
 
-.PHONY : src/edge.i
+.PHONY : src/GridObject.i
 
 # target to preprocess a source file
-src/edge.cpp.i:
-	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.i
-.PHONY : src/edge.cpp.i
+src/GridObject.cpp.i:
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/GridObject.cpp.i
+.PHONY : src/GridObject.cpp.i
 
-src/edge.s: src/edge.cpp.s
+src/GridObject.s: src/GridObject.cpp.s
 
-.PHONY : src/edge.s
+.PHONY : src/GridObject.s
 
 # target to generate assembly for a file
-src/edge.cpp.s:
-	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/edge.cpp.s
-.PHONY : src/edge.cpp.s
+src/GridObject.cpp.s:
+	cd /home/jilada/Github/CS726-SLAMRobot/workspace/build && $(MAKE) -f robot_driver/CMakeFiles/pioneer_laser_node.dir/build.make robot_driver/CMakeFiles/pioneer_laser_node.dir/src/GridObject.cpp.s
+.PHONY : src/GridObject.cpp.s
 
 src/pioneerLaser.o: src/pioneerLaser.cpp.o
 
@@ -488,9 +488,9 @@ help:
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... install"
-	@echo "... src/edge.o"
-	@echo "... src/edge.i"
-	@echo "... src/edge.s"
+	@echo "... src/GridObject.o"
+	@echo "... src/GridObject.i"
+	@echo "... src/GridObject.s"
 	@echo "... src/pioneerLaser.o"
 	@echo "... src/pioneerLaser.i"
 	@echo "... src/pioneerLaser.s"

@@ -17,7 +17,7 @@
 #define ANGLE_90 1.745329
 
 // Difference between lengths
-#define TOLERANCE 0.05
+#define TOLERANCE 0.08
 
 // Laser pose
 #define LASER_POSE 0.28
