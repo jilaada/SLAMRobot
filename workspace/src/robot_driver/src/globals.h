@@ -25,3 +25,9 @@
 // Defining max and min functions
 #define MAX(a, b) (a > b)?a:b 
 #define MIN(a, b) (a < b)?a:b
+
+// Define the shape switching threshold
+#define SWITCH_THRESHOLD 10
+
+// Define the shape location tolerance
+#define LOCATION_TOLERANCE 0.15

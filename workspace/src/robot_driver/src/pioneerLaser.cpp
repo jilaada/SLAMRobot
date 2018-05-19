@@ -16,6 +16,7 @@ void getCoords(GridObject newObject);
 // Globals (odometry)
 Pose currentPose;
 bool constantGradient;
+ShapeList objectContainer;
 
 /*
 The scan subscriber call back function
@@ -115,7 +116,7 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 					newObject->determineGlobalLocation(currentPose.poseX, currentPose.poseY, -currentPose.yaw);
 				}
 				// NEW SHAPE DETECTED, ADD TO VECTOR IF IT IS UNIQUE//
-				
+				objectContainer.addShape(newObject->getShapeType(), newObject->getWidth(), newObject->getLength(), newObject->getRadius(), newObject->getCurrentX(), newObject->getCurrentY());
 				
 				delete newObject;
 			}
@@ -123,15 +124,6 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 		}
 	}
 
-	
-}
-
-void mapCallback(const nav_msgs::OccupancyGrid::ConstPtr &msg) { 
-	//get the origin of the map frame
-	
-	
-	//the occupancy grid is a 1D array representation of a 2-D grid map
-	//compute the robot position in the 1D array
 	
 }
 
@@ -167,13 +159,10 @@ int main (int argc, char **argv) {
 	the call back function is called each time a new data is received from the topic
 	*/
 	ros::Subscriber laser_sub_object = my_handle.subscribe("/scan", 1, laserScanCallback);
-	
-	ros::Subscriber sub_map = my_handle.subscribe("map", 1, mapCallback);
 
 	ros::Rate loop_rate(10);// loop 10 Hz
 	
-	
-	tf::TransformListener listener;
+	objectContainer = ShapeList();
 	// publish the velocity set in the call back
 	while(ros::ok()) {
 		ros::spinOnce();
@@ -181,20 +170,6 @@ int main (int argc, char **argv) {
 		
 		loop_rate.sleep();
 		
-		tf::StampedTransform transform;
-		try{
-			//transform the coordinate frame of the robot to that of the map
-			//(x,y) index of the 2D Grid
-			listener.lookupTransform("map", "base_link",ros::Time(0), transform);
-			
-			cout << "Global X: " << transform.getOrigin().x() << "\n";
-			cout << "Global Y: " << transform.getOrigin().y() << "\n";
-			cout << "Rotation: " << currentPose.roll << " : " << currentPose.pitch << " : " << currentPose.yaw << "\n";
-		}
-		catch (tf::TransformException ex){
-			ROS_ERROR("%s\n",ex.what());
-			ros::Duration(1.0).sleep();
-		}
 	}
 
 	return 0;
