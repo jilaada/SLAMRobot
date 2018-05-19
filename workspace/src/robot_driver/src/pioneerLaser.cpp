@@ -1,6 +1,7 @@
 // Includes for multiple files
 #include "includes.h"
 #include "GridObject.hpp"
+#include "ShapeList.hpp"
 
 using namespace std;
 
@@ -10,6 +11,7 @@ float cross(Coord A, Coord C);
 float cosineRule(float distanceA, float distanceB, float angleC);
 void determineLocation(float distanceA, float angleA, float distanceB, float angleB);
 float determinePose(float distanceA, float angleA, float distanceB, float angleB, float distanceC, float angleC);
+void getCoords(GridObject newObject);
 
 // Globals (odometry)
 Pose currentPose;
@@ -97,6 +99,7 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 				if (angle < ANGLE_90) {
 					// Check if the lengths are uneven using cosine rule - set a tolerance
 					newObject->determineShapeSR(laserScanData->ranges[startSearchIndex+1], (1.5708-(startSearchIndex+1)*laserScanData->angle_increment), laserScanData->ranges[endSearchIndex], (1.5708-(endSearchIndex)*laserScanData->angle_increment), laserScanData->angle_increment);
+					newObject->determineGlobalLocation(currentPose.poseX, currentPose.poseY, -currentPose.yaw);
 				} else if (angle > ANGLE_180) {
 					// Determine the gradient changes
 					int index = 0;
@@ -109,15 +112,26 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 					}
 				
 					newObject->determineShapeC(laserScanData->ranges[index-RANGE], laserScanData->ranges[index], laserScanData->ranges[index+RANGE], laserScanData->angle_increment, index);
+					newObject->determineGlobalLocation(currentPose.poseX, currentPose.poseY, -currentPose.yaw);
 				}
+				// NEW SHAPE DETECTED, ADD TO VECTOR IF IT IS UNIQUE//
+				
+				
 				delete newObject;
-			} else {
-				cout << "Not able to determine shape due to constraints on points collected\n";
 			}
 			endSearchIndex = 0;
 		}
 	}
 
+	
+}
+
+void mapCallback(const nav_msgs::OccupancyGrid::ConstPtr &msg) { 
+	//get the origin of the map frame
+	
+	
+	//the occupancy grid is a 1D array representation of a 2-D grid map
+	//compute the robot position in the 1D array
 	
 }
 
@@ -153,15 +167,34 @@ int main (int argc, char **argv) {
 	the call back function is called each time a new data is received from the topic
 	*/
 	ros::Subscriber laser_sub_object = my_handle.subscribe("/scan", 1, laserScanCallback);
+	
+	ros::Subscriber sub_map = my_handle.subscribe("map", 1, mapCallback);
 
 	ros::Rate loop_rate(10);// loop 10 Hz
-
+	
+	
+	tf::TransformListener listener;
 	// publish the velocity set in the call back
 	while(ros::ok()) {
 		ros::spinOnce();
 		// Do some calculation 
 		
 		loop_rate.sleep();
+		
+		tf::StampedTransform transform;
+		try{
+			//transform the coordinate frame of the robot to that of the map
+			//(x,y) index of the 2D Grid
+			listener.lookupTransform("map", "base_link",ros::Time(0), transform);
+			
+			cout << "Global X: " << transform.getOrigin().x() << "\n";
+			cout << "Global Y: " << transform.getOrigin().y() << "\n";
+			cout << "Rotation: " << currentPose.roll << " : " << currentPose.pitch << " : " << currentPose.yaw << "\n";
+		}
+		catch (tf::TransformException ex){
+			ROS_ERROR("%s\n",ex.what());
+			ros::Duration(1.0).sleep();
+		}
 	}
 
 	return 0;
@@ -177,6 +210,19 @@ float cross(Coord A, Coord C) {
 
 float cosineRule(float distanceA, float distanceB, float angleC) { 
 	return sqrt(pow(distanceA, 2.0) + pow(distanceB, 2.0) - 2*distanceA*distanceB*cos(angleC));
+}
+
+void getCoords(GridObject newObject) {
+	geometry_msgs::PointStamped globalObjectCoords;
+	globalObjectCoords.header.frame_id = "base_link";
+	
+	globalObjectCoords.header.stamp = ros::Time();
+	
+	globalObjectCoords.point.x = newObject.getCurrentX();
+	globalObjectCoords.point.y = newObject.getCurrentY();
+	globalObjectCoords.point.z = 0.0;
+	
+	tf::Transformer transformer(true, ros::Duration(10));
 }
 
 
