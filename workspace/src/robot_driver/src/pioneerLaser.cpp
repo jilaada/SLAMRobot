@@ -111,7 +111,6 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 						// Search between middle and end
 						index = (endSearchIndex - middleSearchIndex)/2 + middleSearchIndex;
 					}
-				
 					newObject->determineShapeC(laserScanData->ranges[index-RANGE], laserScanData->ranges[index], laserScanData->ranges[index+RANGE], laserScanData->angle_increment, index);
 					newObject->determineGlobalLocation(currentPose.poseX, currentPose.poseY, -currentPose.yaw);
 				}
@@ -169,7 +168,6 @@ int main (int argc, char **argv) {
 		// Do some calculation 
 		
 		loop_rate.sleep();
-		
 	}
 
 	return 0;

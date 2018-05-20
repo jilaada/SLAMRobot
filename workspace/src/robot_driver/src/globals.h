@@ -31,3 +31,6 @@
 
 // Define the shape location tolerance
 #define LOCATION_TOLERANCE 0.15
+
+// Define the size of the robot
+#define ROBOT_SIZE 0.40
