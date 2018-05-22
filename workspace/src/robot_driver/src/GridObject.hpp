@@ -25,6 +25,7 @@ public:
 	float getLength();
 	float getRadius();
 	ShapeType getShapeType();
+	void setDefaultShapeType();
 	
 	float determinePose(float distanceA, float angleA, float distanceB, float angleB, float distanceC, float angleC);
 	void determineLocation(float distanceA, float angleA, float distanceB, float angleB);

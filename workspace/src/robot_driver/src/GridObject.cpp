@@ -38,6 +38,10 @@ ShapeType GridObject::getShapeType() {
 	return this->shape;
 }
 
+void GridObject::setDefaultShapeType() {
+	this->shape = MORE_INFO;
+}
+
 float GridObject::determinePose(float distanceA, float angleA, float distanceB, float angleB, float distanceC, float angleC) {
 	// Current position is a global so should be ok
 	float xA = distanceA * cos(angleA);
@@ -86,7 +90,6 @@ void GridObject::determineShapeC(float distanceA, float distanceB, float distanc
 
 	if (this->constantGradient) {
 		// Potential for vertex of square OR rectangle therefore unsure
-		//cout << "More Info Required!\n";
 		shape = MORE_INFO;
 	} else {
 		radius = cosineRule(this->startDistance, this->endDistance, (this->endIndex-this->startIndex)*increment)/2;

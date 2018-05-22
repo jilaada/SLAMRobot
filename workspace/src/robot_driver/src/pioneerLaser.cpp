@@ -6,17 +6,19 @@
 using namespace std;
 
 geometry_msgs::Twist velocityCommand; 
-void incrementPointer(int &pointer);
-float cross(Coord A, Coord C);
-float cosineRule(float distanceA, float distanceB, float angleC);
-void determineLocation(float distanceA, float angleA, float distanceB, float angleB);
-float determinePose(float distanceA, float angleA, float distanceB, float angleB, float distanceC, float angleC);
-void getCoords(GridObject newObject);
 
 // Globals (odometry)
 Pose currentPose;
 bool constantGradient;
 ShapeList objectContainer;
+int grid_x; 
+int grid_y;
+float map_o_x = 0;
+float map_o_y = 0;
+float map_r = 1;
+int turnCounter = 0;
+
+bool turnLeft, turnRight, objectInFront, turnRandom;
 
 /*
 The scan subscriber call back function
@@ -28,7 +30,6 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	// max angle and min angle of the laser scanner divide by the increment angle of each data point
 	constantGradient = false;
 	float rangeDataNum = 1 + (laserScanData->angle_max - laserScanData->angle_min)  / (laserScanData->angle_increment);
-
 	detectionType currentType = noEdge;
 	detectionType previousType = noEdge;
 	bool detecting = false;
@@ -44,9 +45,50 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	// 3 - gap
 	int currentStatus = 0;
 	int previousStatus = 0;
+	int objectCounter = 0;
+	int overCounter = 0;
+	
+	bool leftBlock, rightBlock = false;
 	
 	// Go through the laser data
 	for(int j = 0; j < rangeDataNum - 1; ++j) { 
+		
+		if ((j >= 128) && (j <= 384) && (laserScanData->ranges[j] < 0.7)) {
+			if (!(turnRight || turnLeft)) {
+				// Not currently turning 
+				cout << turnRight << turnLeft;
+				int random = rand() % 10 ;
+				if (random < 3) {
+					// 20% chance of randomly turning
+					turnRight = true;
+					turnLeft = false;
+				} else {
+					turnLeft = true;
+					turnRight = false;
+				}
+				cout << turnRight << turnLeft << "\n";
+			}
+		} else if ((j >= 100) && (j <= 400) && (laserScanData->ranges[j] >= 0.7)) {
+			overCounter++;
+			if (overCounter >= 300) {
+				// No obstacles ahead
+				overCounter = 0;
+				turnRight = false;
+				turnLeft = false;
+			}
+		}
+		
+		if ((j < 128) && (laserScanData->ranges[j] <= 1.3)) {
+			// Don't turn right Probably an obstacle there
+			cout << "Something to the right\n";
+			rightBlock = true;
+			
+		} else if ((j > 384) && (laserScanData->ranges[j] <= 1.3)) {
+			// Don't turn left as there is something there
+			cout << "Something to the left\n";
+			leftBlock = true;
+		}
+		
 		//**** Code to detect if increasing or decreasing gradient ****//
 		previousStatus = currentStatus;
 		if (laserScanData->ranges[j] < laserScanData->ranges[j+1]) {
@@ -113,6 +155,9 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 					}
 					newObject->determineShapeC(laserScanData->ranges[index-RANGE], laserScanData->ranges[index], laserScanData->ranges[index+RANGE], laserScanData->angle_increment, index);
 					newObject->determineGlobalLocation(currentPose.poseX, currentPose.poseY, -currentPose.yaw);
+				} else {
+					// Object does not have the right angles
+					newObject->setDefaultShapeType();
 				}
 				// NEW SHAPE DETECTED, ADD TO VECTOR IF IT IS UNIQUE//
 				objectContainer.addShape(newObject->getShapeType(), newObject->getWidth(), newObject->getLength(), newObject->getRadius(), newObject->getCurrentX(), newObject->getCurrentY());
@@ -122,8 +167,49 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 			endSearchIndex = 0;
 		}
 	}
-
 	
+	//cout << "Number of objects detected now: " << objectcounter << "\n";
+	// Process which way to move
+	if (turnLeft || turnRight) {
+		if (turnLeft && !leftBlock) {
+			cout << "Turning left\n";
+			velocityCommand.linear.x = 0;   // stop forward movement
+			velocityCommand.angular.z = 1.0; // turn left
+		} else if (turnRight && !rightBlock) {
+			cout << "Turning right\n";
+			velocityCommand.linear.x = 0;   // stop forward movement
+			velocityCommand.angular.z = -1.0; // turn left
+		} else {
+			// Blocked both ways and something in front, just choose a direction
+			cout << "Turning randomly\n";
+			if (turnLeft) {
+				velocityCommand.linear.x = 0;   // stop forward movement
+				velocityCommand.angular.z = 1.0; // turn left
+			} else if (turnRight) {
+				velocityCommand.linear.x = 0;   // stop forward movement
+				velocityCommand.angular.z = -1.0; // turn left
+			}
+		}
+	} else {
+		// Randomise possibility to making a turn
+		int random = rand() % 10 ;
+		if (random < 2) {
+			// 20% chance of randomly turning
+			cout << "Randomly Turning Left\n";
+			velocityCommand.linear.x = 1;   // stop forward movement
+			velocityCommand.angular.z = ((float)random/10.0); // turn left
+		} else if (random < 4) {
+			// 20% chance of randomly turning
+			cout << "Randomly Turning Right\n";
+			velocityCommand.linear.x = 1;   // stop forward movement
+			velocityCommand.angular.z = -((float)random/10.0); // turn left
+		} else {
+			cout << "Going straight\n";
+			velocityCommand.linear.x = 1.0;   // stop forward movement
+			velocityCommand.angular.z = 0; // turn left
+			
+		}
+	}
 }
 
 /*
@@ -146,6 +232,42 @@ void chatterCallback(const nav_msgs::Odometry::ConstPtr& msg)
 	currentPose.yaw = yaw;
 }
 
+/*
+The OccupancyGrid is a 2-D grid map, in which 
+each cell represents the probability of an object.
+http://docs.ros.org/api/nav_msgs/html/msg/OccupancyGrid.html
+*/
+void mapCallback(const nav_msgs::OccupancyGrid::ConstPtr &msg) { 
+	//get the origin of the map frame
+	map_o_x = msg->info.origin.position.x;
+	map_o_y = msg->info.origin.position.y;
+	//get the resolution of each cell in the OccupancyGrid
+	map_r = msg->info.resolution;
+	
+	std::string line;
+	std::string output;
+	
+	//the occupancy grid is a 1D array representation of a 2-D grid map
+	//compute the robot position in the 1D array
+	int r_index = grid_x + grid_y * msg->info.width;
+	//cout << r_index << "\n";
+	int printEnable = 0;
+	//go through the entire gri
+	//print output
+	//printf("%s\n",output.c_str());
+	
+	//other things about the map that you can print
+	/* 
+	ROS_INFO("");
+	ROS_INFO("X: [%d]", grid_x);
+	ROS_INFO("Y: [%d]", grid_y);
+	ROS_INFO("width: [%d]", msg->info.width);
+	ROS_INFO("height: [%d]", msg->info.height);
+	ROS_INFO("resolution: [%d]", msg->info.resolution);
+	ROS_INFO("Map Orientation-> x: [%f], y: [%f], z: [%f], w: [%f]", msg->info.origin.orientation.x, msg->info.origin.orientation.y, msg->info.origin.orientation.z, msg->info.origin.orientation.w);
+	*/
+}
+
 int main (int argc, char **argv) {	
 	ros::init(argc, argv, "pioneer_laser_node");	// command line ROS arguments
 	ros::NodeHandle my_handle;	// ROS comms access point
@@ -158,45 +280,47 @@ int main (int argc, char **argv) {
 	the call back function is called each time a new data is received from the topic
 	*/
 	ros::Subscriber laser_sub_object = my_handle.subscribe("/scan", 1, laserScanCallback);
+	
+	/*
+	subscribe to the map created by gmapping
+	*/
+	ros::Subscriber sub_map = my_handle.subscribe("map", 1, mapCallback);
 
 	ros::Rate loop_rate(10);// loop 10 Hz
 	
 	objectContainer = ShapeList();
+	
+	turnLeft = false;
+	turnRight = false;
+	objectInFront = false;
 	// publish the velocity set in the call back
+	tf::TransformListener listener;
 	while(ros::ok()) {
+		
+		vel_pub_object.publish(velocityCommand);
+		
 		ros::spinOnce();
-		// Do some calculation 
 		
 		loop_rate.sleep();
+		
+		
+		tf::StampedTransform transform;
+		try{
+			//transform the coordinate frame of the robot to that of the map
+			//(x,y) index of the 2D Grid
+			listener.lookupTransform("map", "base_link",ros::Time(0), transform);
+			grid_x = (unsigned int)((transform.getOrigin().x() - map_o_x) / map_r);
+			grid_y = (unsigned int)((transform.getOrigin().y() - map_o_y) / map_r);
+		}
+		catch (tf::TransformException ex){
+			//ROS_ERROR("%s\n",ex.what());
+			ros::Duration(1.0).sleep();
+		}
 	}
 
 	return 0;
 }
 
-// HELPER REGION //
-
-float cross(Coord A, Coord C) {
-	float dot = A.x*C.x + A.y*C.y;
-	float det = A.y*C.x - A.x*C.y;
-	return atan2(det, dot);
-}
-
-float cosineRule(float distanceA, float distanceB, float angleC) { 
-	return sqrt(pow(distanceA, 2.0) + pow(distanceB, 2.0) - 2*distanceA*distanceB*cos(angleC));
-}
-
-void getCoords(GridObject newObject) {
-	geometry_msgs::PointStamped globalObjectCoords;
-	globalObjectCoords.header.frame_id = "base_link";
-	
-	globalObjectCoords.header.stamp = ros::Time();
-	
-	globalObjectCoords.point.x = newObject.getCurrentX();
-	globalObjectCoords.point.y = newObject.getCurrentY();
-	globalObjectCoords.point.z = 0.0;
-	
-	tf::Transformer transformer(true, ros::Duration(10));
-}
 
 
 
