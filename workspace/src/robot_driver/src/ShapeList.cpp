@@ -18,7 +18,7 @@ void ShapeList::addShape(ShapeType shape, float width, float length, float radiu
 		newShape.printShape();
 		shapes.push_back(newShape);
 		cout << "Print 1\n";
-	} else if ((shape == MORE_INFO) || (shape == NULL)) {
+	} else if (shape == MORE_INFO) {
 		return;
 	} else {
 		// Something in the vector therefore interate through
@@ -26,7 +26,7 @@ void ShapeList::addShape(ShapeType shape, float width, float length, float radiu
 			// Determine which measurement to increment the changes by
 			float smallestMeasurement = 0;
 			if (itm->getShape() == CIRCLE) {
-				// Detemrine threshold for circular shapes
+				// Determine threshold for circular shapes
 				smallestMeasurement = itm->getRadius() + LOCATION_TOLERANCE + ROBOT_SIZE;
 			} else {
 				// Determine if the current shape location is within the smallest dimension of an existing shape
@@ -50,6 +50,8 @@ void ShapeList::addShape(ShapeType shape, float width, float length, float radiu
 					}
 					return;
 				} else {
+					// Update the location (running average)
+					itm->updateLocation(currentX, currentY);
 					itm->resetDiffShapeCounter();
 					return;
 				}
@@ -57,7 +59,6 @@ void ShapeList::addShape(ShapeType shape, float width, float length, float radiu
 		}
 		// If we make it out here it is a new shape
 		// Add the shape into the vector
-		cout << "Here\n";
 		newShape.setID(shapes.size());
 		shapes.push_back(newShape);
 		// Print characteristics

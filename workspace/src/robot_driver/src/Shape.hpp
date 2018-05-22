@@ -26,6 +26,8 @@ public:
     void resetDiffShapeCounter();
     void printShape();
     
+    void updateLocation(float currentX, float currentY);
+    
 private:
 
 	// Declare variables for use here:

@@ -16,10 +16,6 @@ int grid_y;
 float map_o_x = 0;
 float map_o_y = 0;
 float map_r = 1;
-int turnCounter = 0;
-
-bool turnLeft, turnRight, objectInFront, turnRandom;
-
 /*
 The scan subscriber call back function
 To understand the sensor_msgs::LaserScan object look at
@@ -45,48 +41,26 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	// 3 - gap
 	int currentStatus = 0;
 	int previousStatus = 0;
-	int objectCounter = 0;
-	int overCounter = 0;
 	
-	bool leftBlock, rightBlock = false;
+	bool blockedRight, blocked, blockedLeft = false;
+	float sumLeft, sumRight = 0.0;
+	int sumLeftCounter, sumRightCounter = 0;
 	
 	// Go through the laser data
 	for(int j = 0; j < rangeDataNum - 1; ++j) { 
-		
-		if ((j >= 128) && (j <= 384) && (laserScanData->ranges[j] < 0.7)) {
-			if (!(turnRight || turnLeft)) {
-				// Not currently turning 
-				cout << turnRight << turnLeft;
-				int random = rand() % 10 ;
-				if (random < 3) {
-					// 20% chance of randomly turning
-					turnRight = true;
-					turnLeft = false;
-				} else {
-					turnLeft = true;
-					turnRight = false;
-				}
-				cout << turnRight << turnLeft << "\n";
+		// Determine where the blockages are
+		if (laserScanData->ranges[j] < 0.7) {
+			if (j < 128) {
+				blockedRight = true;
+				sumRight += laserScanData->ranges[j];
+				sumRightCounter++;
+			} else if ((j >= 128) && (j < 384)) {
+				blocked = true;
+			} else {
+				blockedLeft = true;
+				sumLeft += laserScanData->ranges[j];
+				sumLeftCounter++;
 			}
-		} else if ((j >= 100) && (j <= 400) && (laserScanData->ranges[j] >= 0.7)) {
-			overCounter++;
-			if (overCounter >= 300) {
-				// No obstacles ahead
-				overCounter = 0;
-				turnRight = false;
-				turnLeft = false;
-			}
-		}
-		
-		if ((j < 128) && (laserScanData->ranges[j] <= 1.3)) {
-			// Don't turn right Probably an obstacle there
-			cout << "Something to the right\n";
-			rightBlock = true;
-			
-		} else if ((j > 384) && (laserScanData->ranges[j] <= 1.3)) {
-			// Don't turn left as there is something there
-			cout << "Something to the left\n";
-			leftBlock = true;
 		}
 		
 		//**** Code to detect if increasing or decreasing gradient ****//
@@ -170,45 +144,32 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	
 	//cout << "Number of objects detected now: " << objectcounter << "\n";
 	// Process which way to move
-	if (turnLeft || turnRight) {
-		if (turnLeft && !leftBlock) {
-			cout << "Turning left\n";
-			velocityCommand.linear.x = 0;   // stop forward movement
-			velocityCommand.angular.z = 1.0; // turn left
-		} else if (turnRight && !rightBlock) {
-			cout << "Turning right\n";
-			velocityCommand.linear.x = 0;   // stop forward movement
-			velocityCommand.angular.z = -1.0; // turn left
+	if (blocked) {
+		// Something ahead
+		velocityCommand.linear.x = 0;
+		if (blockedRight && !blockedLeft) {
+			// turn left
+			cout << "Must turn left\n";
+			velocityCommand.angular.z = 1.7; // turn left
+		} else if (!blockedRight && blockedLeft) {
+			// turn right
+			cout << "Must turn right\n";
+			velocityCommand.angular.z = -1.3; // turn right
 		} else {
-			// Blocked both ways and something in front, just choose a direction
-			cout << "Turning randomly\n";
-			if (turnLeft) {
-				velocityCommand.linear.x = 0;   // stop forward movement
-				velocityCommand.angular.z = 1.0; // turn left
-			} else if (turnRight) {
-				velocityCommand.linear.x = 0;   // stop forward movement
-				velocityCommand.angular.z = -1.0; // turn left
+			// Select the direction with the longest side to turn
+			if ((sumRight/sumRightCounter) > (sumLeft/sumLeftCounter)) {
+				// turn to the right
+				cout << "Turning right cause longer\n";
+				velocityCommand.angular.z = -1.5; // turn right
+			} else {
+				cout << "Turning left cause longer\n";
+				velocityCommand.angular.z = 1.5; // turn left
 			}
 		}
 	} else {
-		// Randomise possibility to making a turn
-		int random = rand() % 10 ;
-		if (random < 2) {
-			// 20% chance of randomly turning
-			cout << "Randomly Turning Left\n";
-			velocityCommand.linear.x = 1;   // stop forward movement
-			velocityCommand.angular.z = ((float)random/10.0); // turn left
-		} else if (random < 4) {
-			// 20% chance of randomly turning
-			cout << "Randomly Turning Right\n";
-			velocityCommand.linear.x = 1;   // stop forward movement
-			velocityCommand.angular.z = -((float)random/10.0); // turn left
-		} else {
-			cout << "Going straight\n";
-			velocityCommand.linear.x = 1.0;   // stop forward movement
-			velocityCommand.angular.z = 0; // turn left
-			
-		}
+		// Not blocked so keep going straight
+		velocityCommand.linear.x = 0.75;   // stop forward movement
+		velocityCommand.angular.z = 0; // turn left
 	}
 }
 
@@ -290,9 +251,6 @@ int main (int argc, char **argv) {
 	
 	objectContainer = ShapeList();
 	
-	turnLeft = false;
-	turnRight = false;
-	objectInFront = false;
 	// publish the velocity set in the call back
 	tf::TransformListener listener;
 	while(ros::ok()) {
