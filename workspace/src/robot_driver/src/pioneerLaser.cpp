@@ -16,6 +16,9 @@ int grid_y;
 float map_o_x = 0;
 float map_o_y = 0;
 float map_r = 1;
+
+bool turning = false;
+
 /*
 The scan subscriber call back function
 To understand the sensor_msgs::LaserScan object look at
@@ -41,25 +44,31 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	// 3 - gap
 	int currentStatus = 0;
 	int previousStatus = 0;
-	
-	bool blockedRight, blocked, blockedLeft = false;
 	float sumLeft, sumRight = 0.0;
 	int sumLeftCounter, sumRightCounter = 0;
+	
+	bool blockedRight, blocked, blockedLeft = false;
 	
 	// Go through the laser data
 	for(int j = 0; j < rangeDataNum - 1; ++j) { 
 		// Determine where the blockages are
-		if (laserScanData->ranges[j] < 0.7) {
+		if ((laserScanData->ranges[j] < 0.7) && !turning) {
 			if (j < 128) {
 				blockedRight = true;
+				cout << "Right blocking \n";
 				sumRight += laserScanData->ranges[j];
 				sumRightCounter++;
-			} else if ((j >= 128) && (j < 384)) {
-				blocked = true;
-			} else {
+			} else if (j >= 384) {
 				blockedLeft = true;
+				cout << "Left blocking \n";
 				sumLeft += laserScanData->ranges[j];
 				sumLeftCounter++;
+			}
+		}
+		
+		if (laserScanData->ranges[j] < 0.7) {
+			if ((j >= 128) && (j < 384)) {
+				blocked = true;
 			}
 		}
 		
@@ -144,30 +153,33 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	
 	//cout << "Number of objects detected now: " << objectcounter << "\n";
 	// Process which way to move
+	
 	if (blocked) {
 		// Something ahead
 		velocityCommand.linear.x = 0;
+		turning = true;
 		if (blockedRight && !blockedLeft) {
 			// turn left
 			cout << "Must turn left\n";
-			velocityCommand.angular.z = 1.7; // turn left
+			velocityCommand.angular.z = 1.5; // turn left
 		} else if (!blockedRight && blockedLeft) {
 			// turn right
 			cout << "Must turn right\n";
-			velocityCommand.angular.z = -1.3; // turn right
+			velocityCommand.angular.z = -1.5; // turn right
 		} else {
 			// Select the direction with the longest side to turn
 			if ((sumRight/sumRightCounter) > (sumLeft/sumLeftCounter)) {
 				// turn to the right
-				cout << "Turning right cause longer\n";
+				cout << "Turning right cause longer " << (sumRight/sumRightCounter) << "\n";
 				velocityCommand.angular.z = -1.5; // turn right
 			} else {
-				cout << "Turning left cause longer\n";
+				cout << "Turning left cause longer " << (sumLeft/sumLeftCounter) << "\n";
 				velocityCommand.angular.z = 1.5; // turn left
 			}
 		}
 	} else {
 		// Not blocked so keep going straight
+		turning = false;
 		velocityCommand.linear.x = 0.75;   // stop forward movement
 		velocityCommand.angular.z = 0; // turn left
 	}

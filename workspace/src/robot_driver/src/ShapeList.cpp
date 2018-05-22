@@ -52,6 +52,7 @@ void ShapeList::addShape(ShapeType shape, float width, float length, float radiu
 				} else {
 					// Update the location (running average)
 					itm->updateLocation(currentX, currentY);
+					//itm->printShape();
 					itm->resetDiffShapeCounter();
 					return;
 				}
