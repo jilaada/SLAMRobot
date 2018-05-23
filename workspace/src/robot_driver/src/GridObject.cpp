@@ -75,10 +75,8 @@ void GridObject::determineShapeSR(float distanceA, float angleA, float distanceB
 		
 	if ((width > length-TOLERANCE) && (width < length+TOLERANCE)) {
 		// Equal lengths - this is square
-		//cout << "Found a square!    " << "x: " << width << " : " << "y: " << length << "\n";
 		shape = SQUARE;
 	} else {
-		//cout << "Found a rectangle! " << "x: " << width << " : " << "y: " << length << "\n";
 		shape = RECTANGLE;
 	}
 	determineLocation(distanceA, angleA, distanceB, angleB);
@@ -94,7 +92,6 @@ void GridObject::determineShapeC(float distanceA, float distanceB, float distanc
 	} else {
 		radius = cosineRule(this->startDistance, this->endDistance, (this->endIndex-this->startIndex)*increment)/2;
 		shape = CIRCLE;
-		//cout << "Found a circle     " << "Radius: " << radius << "\n";
 		determineLocation(this->startDistance, (1.5708-(this->startIndex)*increment), this->endDistance, (1.5708-(this->endIndex)*increment));
 	}
 }
@@ -115,7 +112,7 @@ void GridObject::determineLocation(float distanceA, float angleA, float distance
 	
 	float midY = (yB - yA)/2 + yA;
 	
-	this->currentX = midX;
+	this->currentX = midX; 
 	this->currentY = midY;
 }
 
@@ -123,11 +120,8 @@ void GridObject::determineGlobalLocation(float robotX, float robotY, float robot
 	float tempX = cos(robotYaw)*this->currentX - sin(robotYaw)*this->currentY;
 	float tempY = cos(robotYaw)*this->currentY + sin(robotYaw)*this->currentX;
 	
-	this->currentX = tempX + robotX;
+	this->currentX = tempX + robotX + 0.5; // Positional offset
 	this->currentY = tempY - robotY;
-	
-	//cout << "Location x: " << this->currentX << "\n";
-	//cout << "Location y: " << this->currentY << "\n";
 }
 
 float GridObject::cross(Coord A, Coord C) {

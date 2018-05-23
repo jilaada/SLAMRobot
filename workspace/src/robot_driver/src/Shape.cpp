@@ -73,7 +73,7 @@ void Shape::printShape() {
 		cout << "This shape should not be here: " << this->shape << " : " << this->length << " : " << this->width << " : " << this->radius << "\n";
 	}
 	cout << "Location x: " << this->currentX << "\n";
-	cout << "Location y: " << this->currentY << "\n";
+	cout << "Location y: " << -(this->currentY) << "\n";
 }    
 
 Shape::~Shape() {

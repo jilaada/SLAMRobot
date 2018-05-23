@@ -5,10 +5,10 @@
 #define CLEARANCE 0.3
 
 // Defining the region of search
-#define RANGE 5
+#define RANGE 3
 
 // Define scale factor to ensure that the points read are eligible for algorithm
-#define FACTOR 3
+#define FACTOR 2
 
 // Circle tolerance
 #define ANGLE_180 2.7925
@@ -27,7 +27,7 @@
 #define MIN(a, b) (a < b)?a:b
 
 // Define the shape switching threshold
-#define SWITCH_THRESHOLD 10
+#define SWITCH_THRESHOLD 20
 
 // Define the shape location tolerance
 #define LOCATION_TOLERANCE 0.15

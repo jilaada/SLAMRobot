@@ -12,6 +12,16 @@ public:
     ~ShapeList();
 	
 	// Declare public functions here:
+	int getShapeListSize();
+	
+	float getShapeCurrentX(int element);
+	
+	float getShapeCurrentY(int element);
+	
+	void removeElement(int element);
+	
+	void printShapes();
+	
 	void addShape(ShapeType shape, float width, float length, float radius, float currentX, float currentY);
     
 private:

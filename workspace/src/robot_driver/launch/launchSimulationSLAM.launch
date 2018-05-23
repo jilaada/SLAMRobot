@@ -10,12 +10,12 @@
 	</node>
 
 	
-    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="log">
 		<param name="map_update_interval" value="0.5" />
 		<param name="linearUpdate" value="0.3" />
 		<param name="angularUpdate" value="0.1" />
 		<param name="scan" value="scan" />
-		<param name="delta" value="0.25" />
+		<param name="delta" value="0.2" />
 		<param name="xmin" value="-2" />
 		<param name="ymin" value="-2" />
 		<param name="xmax" value="2" />

@@ -7,6 +7,8 @@ using namespace std;
 
 geometry_msgs::Twist velocityCommand; 
 
+bool isOnBorder(int currentX, int currentY);
+
 // Globals (odometry)
 Pose currentPose;
 bool constantGradient;
@@ -18,6 +20,7 @@ float map_o_y = 0;
 float map_r = 1;
 
 bool turning = false;
+int objectcounter = 0;
 
 /*
 The scan subscriber call back function
@@ -44,9 +47,9 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	// 3 - gap
 	int currentStatus = 0;
 	int previousStatus = 0;
+	objectcounter = 0;
 	float sumLeft, sumRight = 0.0;
 	int sumLeftCounter, sumRightCounter = 0;
-	
 	bool blockedRight, blocked, blockedLeft = false;
 	
 	// Go through the laser data
@@ -55,12 +58,12 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 		if ((laserScanData->ranges[j] < 0.7) && !turning) {
 			if (j < 128) {
 				blockedRight = true;
-				cout << "Right blocking \n";
+				//cout << "Right blocking \n";
 				sumRight += laserScanData->ranges[j];
 				sumRightCounter++;
 			} else if (j >= 384) {
 				blockedLeft = true;
-				cout << "Left blocking \n";
+				//cout << "Left blocking \n";
 				sumLeft += laserScanData->ranges[j];
 				sumLeftCounter++;
 			}
@@ -144,7 +147,7 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 				}
 				// NEW SHAPE DETECTED, ADD TO VECTOR IF IT IS UNIQUE//
 				objectContainer.addShape(newObject->getShapeType(), newObject->getWidth(), newObject->getLength(), newObject->getRadius(), newObject->getCurrentX(), newObject->getCurrentY());
-				
+				objectcounter++;
 				delete newObject;
 			}
 			endSearchIndex = 0;
@@ -160,20 +163,20 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 		turning = true;
 		if (blockedRight && !blockedLeft) {
 			// turn left
-			cout << "Must turn left\n";
+			//cout << "Must turn left\n";
 			velocityCommand.angular.z = 1.5; // turn left
 		} else if (!blockedRight && blockedLeft) {
 			// turn right
-			cout << "Must turn right\n";
+			//cout << "Must turn right\n";
 			velocityCommand.angular.z = -1.5; // turn right
 		} else {
 			// Select the direction with the longest side to turn
 			if ((sumRight/sumRightCounter) > (sumLeft/sumLeftCounter)) {
 				// turn to the right
-				cout << "Turning right cause longer " << (sumRight/sumRightCounter) << "\n";
+				//cout << "Turning right cause longer " << (sumRight/sumRightCounter) << "\n";
 				velocityCommand.angular.z = -1.5; // turn right
 			} else {
-				cout << "Turning left cause longer " << (sumLeft/sumLeftCounter) << "\n";
+				//cout << "Turning left cause longer " << (sumLeft/sumLeftCounter) << "\n";
 				velocityCommand.angular.z = 1.5; // turn left
 			}
 		}
@@ -217,17 +220,35 @@ void mapCallback(const nav_msgs::OccupancyGrid::ConstPtr &msg) {
 	//get the resolution of each cell in the OccupancyGrid
 	map_r = msg->info.resolution;
 	
-	std::string line;
-	std::string output;
+	// Go through the entire shape list - determine if the shape actually exists where it says it exists
+	int listSize = objectContainer.getShapeListSize();
 	
 	//the occupancy grid is a 1D array representation of a 2-D grid map
 	//compute the robot position in the 1D array
 	int r_index = grid_x + grid_y * msg->info.width;
 	//cout << r_index << "\n";
 	int printEnable = 0;
-	//go through the entire gri
-	//print output
-	//printf("%s\n",output.c_str());
+	float shapeXLoc = 0.0;
+	float shapeYLoc = 0.0;
+	int pointIndex = 0;
+	
+	for(int i = 0; i < listSize; i++) {
+		// Get the current XY and check if they exist
+		shapeXLoc = objectContainer.getShapeCurrentX(i);
+		shapeYLoc = objectContainer.getShapeCurrentY(i);
+		
+		// Convert to index
+		pointIndex = round(shapeXLoc) + round(shapeYLoc)*msg->info.width;
+		
+		if (msg->data[pointIndex] == 0 || isOnBorder(shapeXLoc, shapeYLoc)) {
+			// There is no shape there
+			objectContainer.removeElement(i);
+			cout << "Removing the element\n";
+			return;
+		}	
+	}
+	
+	objectContainer.printShapes();
 	
 	//other things about the map that you can print
 	/* 
@@ -259,12 +280,40 @@ int main (int argc, char **argv) {
 	*/
 	ros::Subscriber sub_map = my_handle.subscribe("map", 1, mapCallback);
 
-	ros::Rate loop_rate(10);// loop 10 Hz
+	ros::Rate loop_rate(1000);// loop 10 Hz
 	
 	objectContainer = ShapeList();
 	
 	// publish the velocity set in the call back
 	tf::TransformListener listener;
+	
+	int random_direction = (rand() % 10) + 20;
+	velocityCommand.linear.x = 0;
+	velocityCommand.angular.z = 1.5;
+	
+	for (int i = 0; i < random_direction; i++) {
+		vel_pub_object.publish(velocityCommand);
+		
+		//ros::spinOnce();
+		
+		loop_rate.sleep();
+		
+		
+		tf::StampedTransform transform;
+		try{
+			//transform the coordinate frame of the robot to that of the map
+			//(x,y) index of the 2D Grid
+			listener.lookupTransform("map", "base_link",ros::Time(0), transform);
+			grid_x = (unsigned int)((transform.getOrigin().x() - map_o_x) / map_r);
+			grid_y = (unsigned int)((transform.getOrigin().y() - map_o_y) / map_r);
+			//cout << "Gridy: " << grid_y << "   GridX: " << grid_x << "\n";
+		}
+		catch (tf::TransformException ex){
+			//ROS_ERROR("%s\n",ex.what());
+			ros::Duration(1.0).sleep();
+		}
+	}
+	
 	while(ros::ok()) {
 		
 		vel_pub_object.publish(velocityCommand);
@@ -283,7 +332,6 @@ int main (int argc, char **argv) {
 			grid_y = (unsigned int)((transform.getOrigin().y() - map_o_y) / map_r);
 		}
 		catch (tf::TransformException ex){
-			//ROS_ERROR("%s\n",ex.what());
 			ros::Duration(1.0).sleep();
 		}
 	}
@@ -292,6 +340,12 @@ int main (int argc, char **argv) {
 }
 
 
-
+/* HELPER REGION */
+bool isOnBorder(int currentX, int currentY) {
+	if ((currentX <= 0) || (currentX >= 10) || (currentY >= 3) || (currentY <= -3)) {
+		return true;
+	}
+	return false;
+}
 
 
