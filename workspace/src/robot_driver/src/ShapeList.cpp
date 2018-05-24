@@ -27,6 +27,9 @@ void ShapeList::removeElement(int element) {
 void ShapeList::addShape(ShapeType shape, float width, float length, float radius, float currentX, float currentY) {
 	// All the components required to create a shape
 	Shape newShape = Shape(currentX, currentY, shape, length, width, radius);
+	if ((length >= 1.0) || (width >= 1.0) || (radius >= 1.0)) {
+		return;
+	}
 	if ((shape == CIRCLE) || (shape == RECTANGLE) || (shape == SQUARE)) {
 		// Something in the vector therefore interate through
 		for(std::vector<Shape>::iterator itm = shapes.begin(); itm != shapes.end(); ++itm) {

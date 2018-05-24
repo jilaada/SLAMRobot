@@ -165,30 +165,30 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 		turning = true;
 		if (blockedRight && !blockedLeft) {
 			// turn left
-			//cout << "Must turn left\n";
-			velocityCommand.angular.z = 1.5; // turn left
+			cout << "Must turn left\n";
+			velocityCommand.angular.z = 0.1; // turn left
 		} else if (!blockedRight && blockedLeft) {
 			// turn right
-			//cout << "Must turn right\n";
-			velocityCommand.angular.z = -1.5; // turn right
+			cout << "Must turn right\n";
+			velocityCommand.angular.z = -0.1; // turn right
 		} else {
 			// Select the direction with the longest side to turn
 			if ((sumRight/sumRightCounter) > (sumLeft/sumLeftCounter)) {
 				// turn to the right
-				//cout << "Turning right cause longer " << (sumRight/sumRightCounter) << "\n";
-				velocityCommand.angular.z = -1.5; // turn right
+				cout << "Turning right cause longer " << (sumRight/sumRightCounter) << "\n";
+				velocityCommand.angular.z = -0.1; // turn right
 			} else if ((sumRight/sumRightCounter) < (sumLeft/sumLeftCounter)) {
-				//cout << "Turning left cause longer " << (sumLeft/sumLeftCounter) << "\n";
-				velocityCommand.angular.z = 1.5; // turn left
+				cout << "Turning left cause longer " << (sumLeft/sumLeftCounter) << "\n";
+				velocityCommand.angular.z = 0.1; // turn left
 			} else {
 				//cout << "too wide\n";
 				if (laserScanData->ranges[0] > laserScanData->ranges[rangeDataNum-1]) {
 					// turn right
 					
-					velocityCommand.angular.z = -1.5;
+					velocityCommand.angular.z = -0.1;
 				} else {
 					// turn left
-					velocityCommand.angular.z = 1.5;
+					velocityCommand.angular.z = 0.1;
 				}
 			}
 		}
@@ -197,8 +197,8 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 		turning = false;
 		blockedRight = false;
 		blockedLeft = false;
-		velocityCommand.linear.x = 0.75;   // stop forward movement
-		velocityCommand.angular.z = 0; // turn left
+		velocityCommand.linear.x = 0.2;   // stop forward movement
+		velocityCommand.angular.z = 0.0; // turn left
 		
 	}
 }
@@ -254,57 +254,11 @@ void mapCallback(const nav_msgs::OccupancyGrid::ConstPtr &msg) {
 		}
 		shapeXLoc = (unsigned int)((round(objectContainer.getShapeCurrentX(i)) - map_o_x) / map_r);
 		shapeYLoc = (unsigned int)((round(objectContainer.getShapeCurrentY(i)) - map_o_y) / map_r);
-		cout << "\nShape\n";
 		
 		// Convert to index
 		pointIndex = shapeXLoc + shapeYLoc*msg->info.width;
-		int pointIndex1 = shapeXLoc-1 + shapeYLoc*msg->info.width;
-		int pointIndex2 = shapeXLoc + (shapeYLoc-1)*msg->info.width;
-		int pointIndex3 = shapeXLoc+1 + shapeYLoc*msg->info.width;
-		int pointIndex4 = shapeXLoc + (shapeYLoc+1)*msg->info.width;
 		
-		if (msg->data[pointIndex] == 0) {
-			cout << "Data is 0 \n";
-		} else if (msg->data[pointIndex] == -1) {
-			cout << "Data is -1 \n";
-		} else {
-			cout << "Something other than 0 and -1 \n";
-		}
-		
-		if (msg->data[pointIndex1] == 0) {
-			cout << "Data1 is 0 \n";
-		} else if (msg->data[pointIndex] == -1) {
-			cout << "Data1 is -1 \n";
-		} else {
-			cout << "Something other than 0 and -1 \n";
-		}
-		
-		if (msg->data[pointIndex2] == 0) {
-			cout << "Data2 is 0 \n";
-		} else if (msg->data[pointIndex] == -1) {
-			cout << "Data2 is -1 \n";
-		} else {
-			cout << "Something other than 0 and -1 \n";
-		}
-		
-		if (msg->data[pointIndex3] == 0) {
-			cout << "Data3 is 0 \n";
-		} else if (msg->data[pointIndex] == -1) {
-			cout << "Data3 is -1 \n";
-		} else {
-			cout << "Something other than 0 and -1 \n";
-		}
-		
-		if (msg->data[pointIndex4] == 0) {
-			cout << "Data4 is 0 \n";
-		} else if (msg->data[pointIndex] == -1) {
-			cout << "Data4 is -1 \n";
-		} else {
-			cout << "Something other than 0 and -1 \n";
-		}
-		
-		cout << "data " << (int)(msg->data[pointIndex]) << "\n";
-		if (msg->data[pointIndex] == 0 || isOnBorder(objectContainer.getShapeCurrentX(i), objectContainer.getShapeCurrentY(i))) {
+		if (isOnBorder(objectContainer.getShapeCurrentX(i), objectContainer.getShapeCurrentY(i))) {
 			// There is no shape there
 			objectContainer.removeElement(i);
 			cout << "Removing the element\n";
@@ -344,7 +298,7 @@ int main (int argc, char **argv) {
 	
 	int random_direction = (rand() % 10) + 20;
 	velocityCommand.linear.x = 0;
-	velocityCommand.angular.z = 1.5;
+	velocityCommand.angular.z = 0.1;
 	
 	for (int i = 0; i < random_direction; i++) {
 		vel_pub_object.publish(velocityCommand);
