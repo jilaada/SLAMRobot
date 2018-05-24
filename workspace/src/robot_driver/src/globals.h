@@ -5,10 +5,10 @@
 #define CLEARANCE 0.3
 
 // Defining the region of search
-#define RANGE 3
+#define RANGE 2
 
 // Define scale factor to ensure that the points read are eligible for algorithm
-#define FACTOR 2
+#define FACTOR 1
 
 // Circle tolerance
 #define ANGLE_180 2.7925
@@ -17,7 +17,7 @@
 #define ANGLE_90 1.745329
 
 // Difference between lengths
-#define TOLERANCE 0.08
+#define TOLERANCE 0.04
 
 // Laser pose
 #define LASER_POSE 0.28

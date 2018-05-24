@@ -21,6 +21,7 @@ float map_r = 1;
 
 bool turning = false;
 int objectcounter = 0;
+bool blockedRight, blockedLeft = false;
 
 /*
 The scan subscriber call back function
@@ -50,11 +51,12 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 	objectcounter = 0;
 	float sumLeft, sumRight = 0.0;
 	int sumLeftCounter, sumRightCounter = 0;
-	bool blockedRight, blocked, blockedLeft = false;
+	bool blocked = false;
 	
 	// Go through the laser data
 	for(int j = 0; j < rangeDataNum - 1; ++j) { 
 		// Determine where the blockages are
+		
 		if ((laserScanData->ranges[j] < 0.7) && !turning) {
 			if (j < 128) {
 				blockedRight = true;
@@ -68,7 +70,7 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 				sumLeftCounter++;
 			}
 		}
-		
+
 		if (laserScanData->ranges[j] < 0.7) {
 			if ((j >= 128) && (j < 384)) {
 				blocked = true;
@@ -163,28 +165,41 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 		turning = true;
 		if (blockedRight && !blockedLeft) {
 			// turn left
-			//cout << "Must turn left\n";
+			cout << "Must turn left\n";
 			velocityCommand.angular.z = 1.5; // turn left
 		} else if (!blockedRight && blockedLeft) {
 			// turn right
-			//cout << "Must turn right\n";
+			cout << "Must turn right\n";
 			velocityCommand.angular.z = -1.5; // turn right
 		} else {
 			// Select the direction with the longest side to turn
 			if ((sumRight/sumRightCounter) > (sumLeft/sumLeftCounter)) {
 				// turn to the right
-				//cout << "Turning right cause longer " << (sumRight/sumRightCounter) << "\n";
+				cout << "Turning right cause longer " << (sumRight/sumRightCounter) << "\n";
 				velocityCommand.angular.z = -1.5; // turn right
-			} else {
-				//cout << "Turning left cause longer " << (sumLeft/sumLeftCounter) << "\n";
+			} else if ((sumRight/sumRightCounter) < (sumLeft/sumLeftCounter)) {
+				cout << "Turning left cause longer " << (sumLeft/sumLeftCounter) << "\n";
 				velocityCommand.angular.z = 1.5; // turn left
+			} else {
+				cout << "too wide\n";
+				if (laserScanData->ranges[0] > laserScanData->ranges[rangeDataNum-1]) {
+					// turn right
+					
+					velocityCommand.angular.z = -1.5;
+				} else {
+					// turn left
+					velocityCommand.angular.z = 1.5;
+				}
 			}
 		}
 	} else {
 		// Not blocked so keep going straight
 		turning = false;
+		blockedRight = false;
+		blockedLeft = false;
 		velocityCommand.linear.x = 0.75;   // stop forward movement
 		velocityCommand.angular.z = 0; // turn left
+		
 	}
 }
 
@@ -249,17 +264,6 @@ void mapCallback(const nav_msgs::OccupancyGrid::ConstPtr &msg) {
 	}
 	
 	objectContainer.printShapes();
-	
-	//other things about the map that you can print
-	/* 
-	ROS_INFO("");
-	ROS_INFO("X: [%d]", grid_x);
-	ROS_INFO("Y: [%d]", grid_y);
-	ROS_INFO("width: [%d]", msg->info.width);
-	ROS_INFO("height: [%d]", msg->info.height);
-	ROS_INFO("resolution: [%d]", msg->info.resolution);
-	ROS_INFO("Map Orientation-> x: [%f], y: [%f], z: [%f], w: [%f]", msg->info.origin.orientation.x, msg->info.origin.orientation.y, msg->info.origin.orientation.z, msg->info.origin.orientation.w);
-	*/
 }
 
 int main (int argc, char **argv) {	
