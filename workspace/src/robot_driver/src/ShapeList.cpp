@@ -71,6 +71,14 @@ void ShapeList::addShape(ShapeType shape, float width, float length, float radiu
 	return;
 }
 
+void ShapeList::setElementShapeExists(int element) {
+	shapes.at(element).setShapeExists();
+}
+	
+bool ShapeList::getElementShapeExists(int element) {
+	shapes.at(element).getShapeExists();
+}
+
 void ShapeList::printShapes() {
 	for(std::vector<Shape>::iterator itm = shapes.begin(); itm != shapes.end(); ++itm) {
 		itm->printShape();

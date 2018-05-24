@@ -165,23 +165,23 @@ void laserScanCallback(const sensor_msgs::LaserScan::ConstPtr& laserScanData) {
 		turning = true;
 		if (blockedRight && !blockedLeft) {
 			// turn left
-			cout << "Must turn left\n";
+			//cout << "Must turn left\n";
 			velocityCommand.angular.z = 1.5; // turn left
 		} else if (!blockedRight && blockedLeft) {
 			// turn right
-			cout << "Must turn right\n";
+			//cout << "Must turn right\n";
 			velocityCommand.angular.z = -1.5; // turn right
 		} else {
 			// Select the direction with the longest side to turn
 			if ((sumRight/sumRightCounter) > (sumLeft/sumLeftCounter)) {
 				// turn to the right
-				cout << "Turning right cause longer " << (sumRight/sumRightCounter) << "\n";
+				//cout << "Turning right cause longer " << (sumRight/sumRightCounter) << "\n";
 				velocityCommand.angular.z = -1.5; // turn right
 			} else if ((sumRight/sumRightCounter) < (sumLeft/sumLeftCounter)) {
-				cout << "Turning left cause longer " << (sumLeft/sumLeftCounter) << "\n";
+				//cout << "Turning left cause longer " << (sumLeft/sumLeftCounter) << "\n";
 				velocityCommand.angular.z = 1.5; // turn left
 			} else {
-				cout << "too wide\n";
+				//cout << "too wide\n";
 				if (laserScanData->ranges[0] > laserScanData->ranges[rangeDataNum-1]) {
 					// turn right
 					
@@ -243,23 +243,74 @@ void mapCallback(const nav_msgs::OccupancyGrid::ConstPtr &msg) {
 	int r_index = grid_x + grid_y * msg->info.width;
 	//cout << r_index << "\n";
 	int printEnable = 0;
-	float shapeXLoc = 0.0;
-	float shapeYLoc = 0.0;
+	int shapeXLoc = 0;
+	int shapeYLoc = 0;
 	int pointIndex = 0;
 	
 	for(int i = 0; i < listSize; i++) {
 		// Get the current XY and check if they exist
-		shapeXLoc = objectContainer.getShapeCurrentX(i);
-		shapeYLoc = objectContainer.getShapeCurrentY(i);
+		if (objectContainer.getElementShapeExists(i)) {
+			continue;
+		}
+		shapeXLoc = (unsigned int)((round(objectContainer.getShapeCurrentX(i)) - map_o_x) / map_r);
+		shapeYLoc = (unsigned int)((round(objectContainer.getShapeCurrentY(i)) - map_o_y) / map_r);
+		cout << "\nShape\n";
 		
 		// Convert to index
-		pointIndex = round(shapeXLoc) + round(shapeYLoc)*msg->info.width;
+		pointIndex = shapeXLoc + shapeYLoc*msg->info.width;
+		int pointIndex1 = shapeXLoc-1 + shapeYLoc*msg->info.width;
+		int pointIndex2 = shapeXLoc + (shapeYLoc-1)*msg->info.width;
+		int pointIndex3 = shapeXLoc+1 + shapeYLoc*msg->info.width;
+		int pointIndex4 = shapeXLoc + (shapeYLoc+1)*msg->info.width;
 		
-		if (msg->data[pointIndex] == 0 || isOnBorder(shapeXLoc, shapeYLoc)) {
+		if (msg->data[pointIndex] == 0) {
+			cout << "Data is 0 \n";
+		} else if (msg->data[pointIndex] == -1) {
+			cout << "Data is -1 \n";
+		} else {
+			cout << "Something other than 0 and -1 \n";
+		}
+		
+		if (msg->data[pointIndex1] == 0) {
+			cout << "Data1 is 0 \n";
+		} else if (msg->data[pointIndex] == -1) {
+			cout << "Data1 is -1 \n";
+		} else {
+			cout << "Something other than 0 and -1 \n";
+		}
+		
+		if (msg->data[pointIndex2] == 0) {
+			cout << "Data2 is 0 \n";
+		} else if (msg->data[pointIndex] == -1) {
+			cout << "Data2 is -1 \n";
+		} else {
+			cout << "Something other than 0 and -1 \n";
+		}
+		
+		if (msg->data[pointIndex3] == 0) {
+			cout << "Data3 is 0 \n";
+		} else if (msg->data[pointIndex] == -1) {
+			cout << "Data3 is -1 \n";
+		} else {
+			cout << "Something other than 0 and -1 \n";
+		}
+		
+		if (msg->data[pointIndex4] == 0) {
+			cout << "Data4 is 0 \n";
+		} else if (msg->data[pointIndex] == -1) {
+			cout << "Data4 is -1 \n";
+		} else {
+			cout << "Something other than 0 and -1 \n";
+		}
+		
+		cout << "data " << (int)(msg->data[pointIndex]) << "\n";
+		if (msg->data[pointIndex] == 0 || isOnBorder(objectContainer.getShapeCurrentX(i), objectContainer.getShapeCurrentY(i))) {
 			// There is no shape there
 			objectContainer.removeElement(i);
 			cout << "Removing the element\n";
 			return;
+		} else {
+			objectContainer.setElementShapeExists(i);
 		}	
 	}
 	
@@ -310,7 +361,6 @@ int main (int argc, char **argv) {
 			listener.lookupTransform("map", "base_link",ros::Time(0), transform);
 			grid_x = (unsigned int)((transform.getOrigin().x() - map_o_x) / map_r);
 			grid_y = (unsigned int)((transform.getOrigin().y() - map_o_y) / map_r);
-			//cout << "Gridy: " << grid_y << "   GridX: " << grid_x << "\n";
 		}
 		catch (tf::TransformException ex){
 			//ROS_ERROR("%s\n",ex.what());
@@ -332,8 +382,8 @@ int main (int argc, char **argv) {
 			//transform the coordinate frame of the robot to that of the map
 			//(x,y) index of the 2D Grid
 			listener.lookupTransform("map", "base_link",ros::Time(0), transform);
-			grid_x = (unsigned int)((transform.getOrigin().x() - map_o_x) / map_r);
-			grid_y = (unsigned int)((transform.getOrigin().y() - map_o_y) / map_r);
+			grid_x = transform.getOrigin().x();
+			grid_y = transform.getOrigin().y();
 		}
 		catch (tf::TransformException ex){
 			ros::Duration(1.0).sleep();

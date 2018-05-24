@@ -20,6 +20,8 @@ public:
 	float getWidth();
 	float getRadius();
 	ShapeType getShape();
+	void setShapeExists();
+	bool getShapeExists();
     
     void incrementDiffShapeCounter();
     int getDiffShapeCounter();
@@ -38,5 +40,6 @@ private:
 	float width;
 	float radius;
 	int diffShapeCounter;
+	bool shapeExists;
 	ShapeType shape;
 };

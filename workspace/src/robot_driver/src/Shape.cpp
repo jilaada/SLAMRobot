@@ -4,7 +4,7 @@ using namespace std;
 
 Shape::Shape(float currentX, float currentY, ShapeType shape, float length, float width, float radius) 
 			: currentX(currentX), currentY(currentY), shape(shape), length(length), width(width), radius(radius) {	
-			
+	this->shapeExists = false;
 }
 
 // Write functions here:
@@ -56,6 +56,14 @@ void Shape::updateLocation(float currentX, float currentY) {
 	// Running average
 	this->currentX = (this->currentX + currentX)/2.0;
 	this->currentY = (this->currentY + currentY)/2.0;
+}
+
+void Shape::setShapeExists() {
+	this->shapeExists = true;
+}
+
+bool Shape::getShapeExists() {
+	return this->shapeExists;
 }
 
 void Shape::printShape() {

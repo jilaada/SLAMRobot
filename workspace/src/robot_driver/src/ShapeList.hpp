@@ -20,6 +20,10 @@ public:
 	
 	void removeElement(int element);
 	
+	void setElementShapeExists(int element);
+	
+	bool getElementShapeExists(int element);
+	
 	void printShapes();
 	
 	void addShape(ShapeType shape, float width, float length, float radius, float currentX, float currentY);
