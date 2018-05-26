@@ -12,6 +12,7 @@
 3. Run "source devel/setup.bash" to set up the environment
 4. Run "roslaunch src/robot_driver/launch/launchSimulationSLAM.launch" to launch the simulation file
 5. On the RVIZ viewer - add a map with "/map"
+
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 ## Algorithm:
@@ -26,18 +27,14 @@ measurements. These are then given identifier that holds the current state of th
 2. decreasing
 3. gap
 
-As all the objects appear as convex shapes and the walls all appear concave, a pattern can be recognised in 
-the states. This pattern can be used to determine if an object has been located.
+As all the objects appear as convex shapes and the walls all appear concave, a pattern can be recognised in the states. This pattern can be used to determine if an object has been located.
 
-If an object has been located, a GridObject will be created and it will begin calculating the shape type, 
-dimensions and then the location of the object. In order to convert from the robot laser coordinates, the 
-robot odom rotation matrix and the current x and y location of the robot are used.
+If an object has been located, a GridObject will be created and it will begin calculating the shape type, dimensions and then the location of the object. In order to convert from the robot laser coordinates, the robot odom rotation matrix and the current x and y location of the robot are used.
 
-The output of the GridObject is then converted into a Shape object. This Shape object is then added to the
-ShapeList which contains a vector of shapes. During this adding process, if another object is already in that
-surrounding area then unless the shape is different then the algorithm will discard that measurement.
+The output of the GridObject is then converted into a Shape object. This Shape object is then added to the ShapeList which contains a vector of shapes. During this adding process, if another object is already in that surrounding area then unless the shape is different then the algorithm will discard that measurement.
 
-The console will display the output ID, shape type, x and y locations as well as the width and length or radius if the object is a circle.  
+The console will display the output ID, shape type, x and y locations as well as the width and length or radius depending on the type of object discovered.
+
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 ## Location of Source File:
@@ -64,5 +61,6 @@ Contains function definition for accessing ShapeList functions. Contains a vecto
 Contains function definition for the gridObject class. This class is used to calculate the x and y locations, width, length and radius of the shape as well as the type of shape the object is.
 ### pioneerLaser.cpp
 Main execution node that will subscribe to the laser scanner, odometry and map nodes to determine the movement of the robot as well as the objects observed in the map. Publishes the velocity commands to the robot to simulate movement.
+
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
