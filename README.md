@@ -39,7 +39,7 @@ The console will display the output ID, shape type, x and y locations as well as
 --------------------------------------------------------------------------------------------------------------
 ## Location of Source File:
 To find the source files for the project navigate to the directory:
-	[../workspace/src/robot_driver/src/](../workspace/src/robot_driver/src/)
+	[../workspace/src/robot_driver/src/](https://github.com/jilaada/SLAMRobot/tree/master/workspace/src/robot_driver/src)
 
 ## Files:
 ### globals.h
