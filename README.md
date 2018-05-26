@@ -1,12 +1,12 @@
 --------------------------------------------------------------------------------------------------------------
-#COMPSYS 726 ASSIGNMENT 1
+# COMPSYS 726 ASSIGNMENT 1
 --------------------------------------------------------------------------------------------------------------
-###UPI: 	jecc724
-###Name: 	Jilada Eccleston
-###ID: 	336439537
+### UPI: 	jecc724
+### Name: 	Jilada Eccleston
+### ID: 	336439537
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-##To run the code:
+## To run the code:
 1. Navigate to the workspace folder
 2. Run "catkin_make" to compile all the files
 3. Run "source devel/setup.bash" to set up the environment
@@ -14,7 +14,7 @@
 5. On the RVIZ viewer - add a map with "/map"
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-##Algorithm:
+## Algorithm:
 The robot will first turn a random number of times and then begin traversing forward until it cannot go any
 further. It will decide in a direction to turn depending on how close an object or wall might be on the left 
 or right of the object. It will turn until there is a clear way to go forward and then begin moving forward.
@@ -40,29 +40,29 @@ surrounding area then unless the shape is different then the algorithm will disc
 The console will display the output ID, shape type, x and y locations as well as the width and length or radius if the object is a circle.  
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-##Location of Source File:
+## Location of Source File:
 To find the source files for the project navigate to the directory:
 	[../workspace/src/robot_driver/src/](../workspace/src/robot_driver/src/)
 
-##Files:
-###globals.h
+## Files:
+### globals.h
 Contains a list of defines for tolerances and other constants used for calculations
-###includes.h
+### includes.h
 Contains a list of packages included for functions to be available to different classes
-###Shape.hpp
+### Shape.hpp
 C++ header file for the Shapes class
-###ShapeList.hpp
+### ShapeList.hpp
 C++ header file for the ShapeList class
-###GridObject.hpp
+### GridObject.hpp
 C++ header file for the GridObject class
 
-###Shape.cpp
+### Shape.cpp
 Contains function definitions for accessing the attributes for a stored shape. Contains information regarding the shape type, width, length, radius, x and y location, as well as other functions that will allow for the shape to switch types a keep a running average of the X and Y locations
-###ShapeList.cpp
+### ShapeList.cpp
 Contains function definition for accessing ShapeList functions. Contains a vector of Shape types that holds the objects detected. An algorithm that will add shapes to the vector and determine if the shape is correctly found. This class is also incharge of printing out the shapes.
-###GridObject.cpp
+### GridObject.cpp
 Contains function definition for the gridObject class. This class is used to calculate the x and y locations, width, length and radius of the shape as well as the type of shape the object is.
-###pioneerLaser.cpp
+### pioneerLaser.cpp
 Main execution node that will subscribe to the laser scanner, odometry and map nodes to determine the movement of the robot as well as the objects observed in the map. Publishes the velocity commands to the robot to simulate movement.
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
